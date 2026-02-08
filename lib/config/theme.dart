@@ -58,15 +58,25 @@ class OpenFlutterEcommerceTheme {
           background: AppColors.background),
       dividerColor: Colors.transparent,
       appBarTheme: theme.appBarTheme.copyWith(
-          color: AppColors.white,
-          iconTheme: IconThemeData(color: AppColors.black),
-          textTheme: theme.textTheme.copyWith(
-              bodySmall: TextStyle(
+        color: AppColors.white,
+        iconTheme: IconThemeData(color: AppColors.black),
+        titleTextStyle: theme.appBarTheme.copyWith(
+          bodySmall: TextStyle(
             color: AppColors.black,
             fontSize: 18,
             fontFamily: 'Metropolis',
             fontWeight: FontWeight.w400,
-          ))),
+          ),
+        ),
+        toolbarTextStyle: theme.textTheme.copyWith(
+          bodyMedium: TextStyle(
+            color: AppColors.black,
+            fontSize: 18,
+            fontFamily: "Metropolis",
+            fontWeight: FontWeight.w400,
+          ),
+        ),
+      ),
       textTheme: theme.textTheme
           .copyWith(
             //over image white text
