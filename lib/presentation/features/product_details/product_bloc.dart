@@ -27,7 +27,6 @@ class ProductBloc extends Bloc<ProductEvent, ProductState> {
         removeFromFavoritesUseCase = sl(),
         super(ProductInitialState());
 
-  @override
   Stream<ProductState> mapEventToState(ProductEvent event) async* {
     if (event is ProductScreenLoadedEvent) {
       yield ProductLoadingState();

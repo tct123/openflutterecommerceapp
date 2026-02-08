@@ -148,9 +148,7 @@ class ProductReviewWrapperState extends State<ProductReviewWrapper> {
                   child: _buildItem(context, index),
                 );
               },
-              childCount: comments != null
-                  ? comments.length + widget.summaryAndFilterIndex
-                  : widget.summaryAndFilterIndex + 1,
+              childCount: comments.length + widget.summaryAndFilterIndex,
             ),
           );
         });
@@ -228,10 +226,6 @@ class ProductReviewWrapperState extends State<ProductReviewWrapper> {
   }
 
   Widget _buildProductReviewItem(int index) {
-    if (comments == null) {
-      return _buildIndicator();
-    }
-
     if (comments.isNotEmpty) {
       var productReview = _getProductReview(index, comments);
 
@@ -259,17 +253,6 @@ class ProductReviewWrapperState extends State<ProductReviewWrapper> {
 
     var productReview = comments[realIndex];
     return productReview;
-  }
-
-  Padding _buildIndicator() {
-    return Padding(
-      padding: const EdgeInsets.only(
-        top: 8.0,
-      ),
-      child: Center(
-        child: CircularProgressIndicator(),
-      ),
-    );
   }
 
   Widget _buildEmptyCommentsView() {

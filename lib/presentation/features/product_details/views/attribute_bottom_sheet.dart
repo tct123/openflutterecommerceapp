@@ -80,19 +80,15 @@ class AttributeBottomSheet extends StatelessWidget {
               SizedBox(
                 height: 10.0,
               ),
-              productAttribute.info == null
-                  ? Container()
-                  : Theme(
-                      data: Theme.of(context)
-                          .copyWith(dividerColor: AppColors.darkGray),
-                      child: Divider()),
-              productAttribute.info == null
-                  ? Container()
-                  : ExpansionTile(
-                      title: Text('${productAttribute.name} info'),
-                      trailing: Icon(Icons.keyboard_arrow_right),
-                      //TODO show info on click
-                    ),
+              Theme(
+                  data: Theme.of(context)
+                      .copyWith(dividerColor: AppColors.darkGray),
+                  child: Divider()),
+              ExpansionTile(
+                title: Text('${productAttribute.name} info'),
+                trailing: Icon(Icons.keyboard_arrow_right),
+                //TODO show info on click
+              ),
               Theme(
                   data: Theme.of(context)
                       .copyWith(dividerColor: AppColors.darkGray),

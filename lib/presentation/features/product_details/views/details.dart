@@ -25,8 +25,7 @@ class ProductDetailsView extends StatefulWidget {
       required this.changeView,
       required this.similarProducts,
       this.category,
-      this.hasReviews = false})
-      : assert(product != null);
+      this.hasReviews = false});
 
   @override
   _ProductDetailsViewState createState() => _ProductDetailsViewState();
@@ -39,7 +38,7 @@ class _ProductDetailsViewState extends State<ProductDetailsView> {
 
   @override
   void initState() {
-    favorite = widget.product?.isFavorite ?? false;
+    favorite = widget.product.isFavorite;
     super.initState();
   }
 
@@ -92,18 +91,13 @@ class _ProductDetailsViewState extends State<ProductDetailsView> {
                           child: Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               mainAxisSize: MainAxisSize.max,
-                              children: (state.product.selectableAttributes !=
-                                          null
-                                      ? state.product.selectableAttributes
-                                          .map((value) =>
-                                              selectionOutlineButton(
-                                                  deviceWidth,
-                                                  value,
-                                                  state.productAttributes
-                                                          .selectedAttributes[
-                                                      value]!))
-                                          .toList()
-                                      : <Widget>[]) +
+                              children: (state.product.selectableAttributes
+                                      .map((value) => selectionOutlineButton(
+                                          deviceWidth,
+                                          value,
+                                          state.productAttributes
+                                              .selectedAttributes[value]!))
+                                      .toList()) +
                                   [
                                     OpenFlutterFavouriteButton(
                                       favourite: favorite,
@@ -117,7 +111,7 @@ class _ProductDetailsViewState extends State<ProductDetailsView> {
                           margin: EdgeInsets.only(
                               left: 16.0, right: 16.0, bottom: 10.0),
                           child: Text(
-                            widget.product.description ?? 'no details',
+                            widget.product.description,
                             style: TextStyle(fontSize: 15.0),
                           ),
                         ),
@@ -237,7 +231,7 @@ class _ProductDetailsViewState extends State<ProductDetailsView> {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: <Widget>[
             Text(
-              alreadySelectedValue ?? attribute.name,
+              alreadySelectedValue,
               style: TextStyle(
                   fontSize: 14,
                   color: AppColors.black,

@@ -11,7 +11,6 @@ class ProductReviewBloc extends Bloc<ProductReviewEvent, ProductReviewState> {
   ProductReviewBloc(this.productReviewRepository)
       : super(ProductReviewInitialState());
 
-  @override
   Stream<ProductReviewState> mapEventToState(ProductReviewEvent event) async* {
     if (event is ProductReviewStartEvent) {
       yield ProductReviewLoadingState();

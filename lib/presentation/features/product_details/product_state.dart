@@ -28,8 +28,8 @@ class ProductLoadedState extends ProductState {
   ProductLoadedState copyWith(Product product, List<Product> similarProducts,
       Map<ProductAttribute, String> productAttributes) {
     return ProductLoadedState(
-      product: product ?? this.product,
-      similarProducts: similarProducts ?? this.similarProducts,
+      product: product,
+      similarProducts: similarProducts,
       productAttributes: this.productAttributes,
     );
   }

@@ -22,7 +22,6 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
         getHomePageProductsUseCase = sl(),
         super(HomeInitialState());
 
-  @override
   Stream<HomeState> mapEventToState(HomeEvent event) async* {
     if (event is HomeLoadEvent) {
       if (state is HomeInitialState) {
