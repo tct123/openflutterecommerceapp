@@ -26,7 +26,8 @@ class OpenFlutterPromoTile extends StatelessWidget {
             BoxShadow(
                 color: AppColors.lightGray.withValues(alpha:(0.3),
                 blurRadius: AppSizes.imageRadius,
-                offset: Offset(0.0, AppSizes.imageRadius))
+                offset: Offset(0.0, AppSizes.imageRadius)
+                )
           ],
           color: AppColors.white),
       child: Row(
