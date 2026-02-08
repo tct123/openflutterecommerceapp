@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:openflutterecommerce/data/repositories/abstract/user_repository.dart';
 
@@ -11,7 +10,6 @@ class ForgetPasswordBloc
   ForgetPasswordBloc({required this.userRepository})
       : super(ForgetPasswordInitialState());
 
-  @override
   Stream<ForgetPasswordState> mapEventToState(
     ForgetPasswordEvent event,
   ) async* {

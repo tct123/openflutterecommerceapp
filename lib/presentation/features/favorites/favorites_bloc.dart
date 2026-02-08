@@ -27,7 +27,6 @@ class FavouriteBloc extends Bloc<FavouriteEvent, FavouriteState> {
         addProductToCartUseCase = sl(),
         super(FavouriteState());
 
-  @override
   Stream<FavouriteState> mapEventToState(FavouriteEvent event) async* {
     if (event is ScreenLoadedEvent) {
       GetFavoriteProductResult favoriteProducts =

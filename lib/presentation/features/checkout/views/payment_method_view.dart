@@ -40,10 +40,10 @@ class _PaymentMethodViewState extends State<PaymentMethodView> {
 
   @override
   void dispose() {
-    _nameOnCardController?.dispose();
-    _cardNumberController?.dispose();
-    _expirationDateController?.dispose();
-    _cvvController?.dispose();
+    _nameOnCardController.dispose();
+    _cardNumberController.dispose();
+    _expirationDateController.dispose();
+    _cvvController.dispose();
     super.dispose();
   }
 

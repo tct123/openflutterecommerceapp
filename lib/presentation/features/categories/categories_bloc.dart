@@ -16,7 +16,6 @@ class CategoryBloc extends Bloc<CategoryEvent, CategoryState> {
       : findCategoriesByFilterUseCase = sl(),
         super(CategoryLoadingState());
 
-  @override
   Stream<CategoryState> mapEventToState(CategoryEvent event) async* {
     if (event is CategoryShowListEvent) {
       if (state is CategoryListViewState) {

@@ -14,7 +14,6 @@ class CheckoutBloc extends Bloc<CheckoutEvent, CheckoutState> {
   CheckoutBloc()
       : checkoutStartUseCase = sl(),
         super(CheckoutInitialState());
-  @override
   Stream<CheckoutState> mapEventToState(CheckoutEvent event) async* {
     if (event is CheckoutStartEvent) {
       if (state is CheckoutInitialState) {

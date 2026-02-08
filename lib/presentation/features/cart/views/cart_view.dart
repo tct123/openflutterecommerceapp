@@ -37,7 +37,7 @@ class _CartViewState extends State<CartView> {
 
   @override
   void dispose() {
-    _promoController?.dispose();
+    _promoController.dispose();
     super.dispose();
   }
 

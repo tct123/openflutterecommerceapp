@@ -43,12 +43,12 @@ class _AddShippingAddressViewState extends State<AddShippingAddressView> {
 
   @override
   void dispose() {
-    _fullNameController?.dispose();
-    _addressController?.dispose();
-    _cityController?.dispose();
-    _stateController?.dispose();
-    _postalController?.dispose();
-    _countryController?.dispose();
+    _fullNameController.dispose();
+    _addressController.dispose();
+    _cityController.dispose();
+    _stateController.dispose();
+    _postalController.dispose();
+    _countryController.dispose();
     super.dispose();
   }
 

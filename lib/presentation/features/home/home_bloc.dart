@@ -1,5 +1,5 @@
 // Home Screen Bloc
-// Author: openflutterproject@gmail.com
+// Author: openfluttere ă¸openflutterproject@gmail.com
 // Date: 2020-02-06
 
 import 'package:bloc/bloc.dart';
@@ -8,6 +8,7 @@ import 'package:openflutterecommerce/domain/usecases/favorites/add_to_favorites_
 import 'package:openflutterecommerce/domain/usecases/favorites/remove_from_favorites_use_case.dart';
 import 'package:openflutterecommerce/domain/usecases/products/get_home_products_use_case.dart';
 import 'package:openflutterecommerce/locator.dart';
+import 'package:openflutterecommerce/data/model/product_attribute.dart';
 
 import 'home.dart';
 
@@ -30,22 +31,23 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
         yield HomeLoadedState(
             salesProducts: results.salesProducts,
             newProducts: results.newProducts);
-      } else if (state is HomeLoadedState) {
-        yield state;
       }
     } else if (event is HomeAddToFavoriteEvent) {
-      if (event.isFavorite!) {
-        await addToFavoritesUseCase
-            .execute(FavoriteProduct(event.product!, null!));
-      } else {
-        await removeFromFavoritesUseCase.execute(
-            RemoveFromFavoritesParams(FavoriteProduct(event.product!, null!)));
+      if (event.isFavorite != null && event.product != null) {
+        if (event.isFavorite!) {
+          await addToFavoritesUseCase.execute(FavoriteProduct(
+              event.product!, [] as Map<ProductAttribute, String>));
+        } else {
+          await removeFromFavoritesUseCase.execute(RemoveFromFavoritesParams(
+              FavoriteProduct(
+                  event.product!, [] as Map<ProductAttribute, String>)));
+        }
+        HomeProductsResult results =
+            await getHomePageProductsUseCase.execute(HomeProductParams());
+        yield HomeLoadedState(
+            salesProducts: results.salesProducts,
+            newProducts: results.newProducts);
       }
-      HomeProductsResult results =
-          await getHomePageProductsUseCase.execute(HomeProductParams());
-      yield HomeLoadedState(
-          salesProducts: results.salesProducts,
-          newProducts: results.newProducts);
     }
   }
 }
