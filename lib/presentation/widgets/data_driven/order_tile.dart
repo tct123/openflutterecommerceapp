@@ -18,7 +18,7 @@ class OpenFlutterOrderTile extends StatelessWidget {
           decoration: BoxDecoration(
             boxShadow: [
               BoxShadow(
-                color: _theme.primaryColor.withValues(alpha:(0.3),
+                color: _theme.primaryColor.withValues(alpha: (0.3)),
                 blurRadius: AppSizes.imageRadius,
               )
             ],
