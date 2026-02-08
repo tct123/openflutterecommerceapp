@@ -1,4 +1,3 @@
-import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:openflutterecommerce/data/repositories/fake_repos/settings_repository.dart';
 import 'package:openflutterecommerce/domain/entities/user/settings.dart';
@@ -9,8 +8,7 @@ class SettingsBloc extends Bloc<SettingsEvent, SettingsState> {
   final SettingsRepository settingsRepository;
 
   SettingsBloc({required this.settingsRepository})
-      : assert(settingsRepository != null),
-        super(SettingsInitialState(
+      : super(SettingsInitialState(
             settings: UserSettingsEntity(
                 fullName: '',
                 dateOfBirth: '',
@@ -18,7 +16,6 @@ class SettingsBloc extends Bloc<SettingsEvent, SettingsState> {
                 notifyArrivals: false,
                 notifyDelivery: false)));
 
-  @override
   Stream<SettingsState> mapEventToState(SettingsEvent event) async* {
     var newSettings = state.settings;
 
@@ -34,7 +31,7 @@ class SettingsBloc extends Bloc<SettingsEvent, SettingsState> {
     } else if (event is UpdateDateOfBirthEvent) {
       newSettings!.dateOfBirth = event.dateOfBirth!;
       try {
-        await settingsRepository.updateDateOfBirth(newSettings!.dateOfBirth);
+        await settingsRepository.updateDateOfBirth(newSettings.dateOfBirth);
         yield DateOfBirthUpdatedState(settings: newSettings);
       } catch (error) {
         yield ChangeSettingsErrorState(
@@ -43,7 +40,7 @@ class SettingsBloc extends Bloc<SettingsEvent, SettingsState> {
     } else if (event is UpdateNotifySalesEvent) {
       newSettings!.notifySales = event.notifySales!;
       try {
-        await settingsRepository.updateNotifySales(newSettings!.notifySales);
+        await settingsRepository.updateNotifySales(newSettings.notifySales);
         yield NotifySalesUpdatedState(settings: newSettings);
       } catch (error) {
         yield ChangeSettingsErrorState(

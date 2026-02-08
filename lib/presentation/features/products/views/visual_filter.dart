@@ -13,64 +13,57 @@ class VisualFilter extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    if (hashTags == null) {
-      return ListView.builder(
-          scrollDirection: Axis.horizontal, itemBuilder: _blankChip);
-    } else {
-      List<Widget> widgetList = hashTags
-              ?.map((optionHashTag) => Padding(
-                    padding: EdgeInsets.only(right: AppSizes.sidePadding / 2),
-                    child: ChoiceChip(
-                      selected: selecteHashTags != null
-                          ? selecteHashTags[optionHashTag] ?? false
-                          : false,
-                      padding: EdgeInsets.all(
-                        AppSizes.linePadding,
-                      ),
-                      backgroundColor: Theme.of(context).primaryColor,
-                      selectedColor: Theme.of(context).colorScheme.secondary,
-                      label: Text(
-                        optionHashTag.title,
-                        style: Theme.of(context).textTheme.labelLarge,
-                      ),
-                      onSelected: (value) {
-                        onFilterChanged(optionHashTag, value);
-                      },
-                    ),
-                  ))
-              ?.toList(growable: false) ??
-          [];
+    List<Widget> widgetList = hashTags
+        .map((optionHashTag) => Padding(
+              padding: EdgeInsets.only(right: AppSizes.sidePadding / 2),
+              child: ChoiceChip(
+                selected: selecteHashTags[optionHashTag] ?? false,
+                padding: EdgeInsets.all(
+                  AppSizes.linePadding,
+                ),
+                backgroundColor: Theme.of(context).primaryColor,
+                selectedColor: Theme.of(context).colorScheme.secondary,
+                label: Text(
+                  optionHashTag.title,
+                  style: Theme.of(context).textTheme.labelLarge,
+                ),
+                onSelected: (value) {
+                  onFilterChanged(optionHashTag, value);
+                },
+              ),
+            ))
+        .toList(growable: false);
 
-      return ListView(
-        scrollDirection: Axis.horizontal,
-        children: <Widget>[
-              SizedBox(
-                width: 16,
-              )
-            ] +
-            widgetList +
-            [
-              SizedBox(
-                width: 16,
-              )
-            ],
-      );
-    }
+    return ListView(
+      scrollDirection: Axis.horizontal,
+      children: <Widget>[
+            SizedBox(
+              width: 16,
+            )
+          ] +
+          widgetList +
+          [
+            SizedBox(
+              width: 16,
+            )
+          ],
+    );
   }
 
   Widget _blankChip(BuildContext context, _) {
     return Padding(
-        padding: EdgeInsets.only(right: AppSizes.sidePadding / 2),
-        child: Chip(
-          padding: EdgeInsets.all(
-            AppSizes.linePadding,
-          ),
-          backgroundColor: Theme.of(context).colorScheme.background,
-          label: Text(
-            '        ',
-            style: Theme.of(context).textTheme.labelLarge,
-          ),
-        ));
+      padding: EdgeInsets.only(right: AppSizes.sidePadding / 2),
+      child: Chip(
+        padding: EdgeInsets.all(
+          AppSizes.linePadding,
+        ),
+        backgroundColor: Theme.of(context).colorScheme.surface,
+        label: Text(
+          '        ',
+          style: Theme.of(context).textTheme.labelLarge,
+        ),
+      ),
+    );
   }
 }
 

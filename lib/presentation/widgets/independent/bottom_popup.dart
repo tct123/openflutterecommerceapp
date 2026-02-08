@@ -17,7 +17,7 @@ class OpenFlutterBottomPopup extends StatelessWidget {
         child: Container(
           alignment: Alignment.center,
           decoration: BoxDecoration(
-              color: _theme.dialogBackgroundColor,
+              color: _theme.dialogTheme.backgroundColor,
               borderRadius: BorderRadius.only(
                 topLeft: Radius.circular(AppSizes.widgetBorderRadius),
                 topRight: Radius.circular(AppSizes.widgetBorderRadius),

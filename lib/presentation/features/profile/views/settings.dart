@@ -42,11 +42,11 @@ class _SettingsViewState extends State<SettingsView> {
 
   @override
   void dispose() {
-    _currentPasswordController?.dispose();
-    _newPasswordController?.dispose();
-    _repeatPasswordController?.dispose();
-    _fullNameController?.dispose();
-    _dateOfBirthController?.dispose();
+    _currentPasswordController.dispose();
+    _newPasswordController.dispose();
+    _repeatPasswordController.dispose();
+    _fullNameController.dispose();
+    _dateOfBirthController.dispose();
     super.dispose();
   }
 
@@ -147,7 +147,7 @@ class _SettingsViewState extends State<SettingsView> {
                       CupertinoSwitch(
                         //trackColor: AppColors.lightGray,
                         value: state.settings!.notifySales,
-                        activeColor: AppColors.success,
+                        activeTrackColor: AppColors.success,
                         onChanged: (newValue) => settingsBloc
                             .add(UpdateNotifySalesEvent(notifySales: newValue)),
                       ),
@@ -166,7 +166,7 @@ class _SettingsViewState extends State<SettingsView> {
                       CupertinoSwitch(
                         //trackColor: AppColors.lightGray,
                         value: state.settings!.notifyArrivals,
-                        activeColor: AppColors.success,
+                        activeTrackColor: AppColors.success,
                         onChanged: (newValue) => settingsBloc
                           ..add(UpdateNotifyArrivalsEvent(
                               notifyArrivals: newValue)),
@@ -186,7 +186,7 @@ class _SettingsViewState extends State<SettingsView> {
                       CupertinoSwitch(
                         //trackColor: AppColors.lightGray,
                         value: state.settings!.notifyDelivery,
-                        activeColor: AppColors.success,
+                        activeTrackColor: AppColors.success,
                         onChanged: (newValue) => settingsBloc
                           ..add(UpdateNotifyDeliveryEvent(
                               notifyDelivery: newValue)),

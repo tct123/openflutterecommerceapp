@@ -20,7 +20,7 @@ class ErrorDialog extends StatelessWidget {
             child: Container(
               padding: EdgeInsets.all(18.0),
               child: Icon(
-                FontAwesomeIcons.exclamationCircle,
+                FontAwesomeIcons.circleExclamation,
                 color: AppColors.red,
               ),
             ),

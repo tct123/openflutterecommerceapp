@@ -21,13 +21,15 @@ class OpenFlutterBottomMenu extends StatelessWidget {
   BottomNavigationBarItem getItem(
       String image, String title, ThemeData theme, int index) {
     return BottomNavigationBarItem(
-        label: title,
-        icon: SvgPicture.asset(
-          image,
-          height: 24.0,
-          width: 24.0,
-          color: colorByIndex(theme, index),
-        ));
+      label: title,
+      icon: SvgPicture.asset(
+        image,
+        height: 24.0,
+        width: 24.0,
+        colorFilter:
+            ColorFilter.mode(colorByIndex(theme, index), BlendMode.srcIn),
+      ),
+    );
   }
 
   @override

@@ -10,7 +10,7 @@ class OpenFlutterButton extends StatelessWidget {
   final double? height;
   final Function() onPressed;
   final String title;
-  IconData? icon;
+  final IconData? icon;
   final double iconSize;
   final Color backgroundColor;
   final Color textColor;

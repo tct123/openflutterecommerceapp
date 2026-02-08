@@ -30,7 +30,7 @@ class BaseProductListItem extends StatelessWidget {
       height: imageHeight + 30,
       padding: EdgeInsets.symmetric(horizontal: AppSizes.widgetSidePadding / 2),
       child: Opacity(
-        opacity: inactiveMessage == null ? 1 : 0.6,
+        opacity: 0.6,
         child: Stack(
           children: <Widget>[
             InkWell(
@@ -69,20 +69,16 @@ class BaseProductListItem extends StatelessWidget {
                 ),
               ),
             ),
-            bottomRoundButton == null
-                ? Container()
-                : Positioned(
-                    top: imageHeight - 32,
-                    right: 0,
-                    child: bottomRoundButton,
-                  ),
-            inactiveMessage == null
-                ? Container()
-                : Positioned(
-                    top: imageHeight + 4,
-                    left: 0,
-                    child: Text(inactiveMessage),
-                  ),
+            Positioned(
+              top: imageHeight - 32,
+              right: 0,
+              child: bottomRoundButton,
+            ),
+            Positioned(
+              top: imageHeight + 4,
+              left: 0,
+              child: Text(inactiveMessage),
+            ),
             specialMark == null
                 ? Container()
                 : Positioned(

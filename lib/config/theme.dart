@@ -51,14 +51,13 @@ class OpenFlutterEcommerceTheme {
       bottomAppBarTheme: BottomAppBarThemeData(
         color: AppColors.lightGray,
       ),
-      dialogBackgroundColor: AppColors.backgroundLight,
       colorScheme: ColorScheme.light(
           error: AppColors.red,
           secondary: AppColors.red,
-          background: AppColors.background),
+          surface: AppColors.background),
       dividerColor: Colors.transparent,
       appBarTheme: theme.appBarTheme.copyWith(
-        color: AppColors.white,
+        backgroundColor: AppColors.white,
         iconTheme: IconThemeData(color: AppColors.black),
         titleTextStyle: TextStyle(
           color: AppColors.black,
@@ -160,6 +159,7 @@ class OpenFlutterEcommerceTheme {
         minWidth: 50,
         buttonColor: AppColors.red,
       ),
+      dialogTheme: DialogThemeData(backgroundColor: AppColors.backgroundLight),
     );
   }
 }

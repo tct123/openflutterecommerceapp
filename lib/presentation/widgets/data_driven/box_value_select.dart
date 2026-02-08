@@ -85,9 +85,8 @@ class _OpenFlutterSelectValuesBoxesState<T>
           color: widget.selectedValues.contains(currentValue)
               ? _theme.colorScheme.secondary
               : AppColors.white),
-      padding: EdgeInsets.symmetric(
-          vertical: AppSizes.sidePadding,
-          horizontal: widget.boxWidth == null ? AppSizes.sidePadding : 0),
+      padding:
+          EdgeInsets.symmetric(vertical: AppSizes.sidePadding, horizontal: 0),
       child: Text(
         convertValueToString(currentValue).toUpperCase(),
         overflow: TextOverflow.ellipsis,
@@ -109,12 +108,10 @@ class _OpenFlutterSelectValuesBoxesState<T>
   }
 
   void updateSelectedBoxes(T currentValue) {
-    if (selectedValues != null) {
-      if (selectedValues.contains(currentValue)) {
-        selectedValues.remove(currentValue);
-      } else {
-        selectedValues.add(currentValue);
-      }
+    if (selectedValues.contains(currentValue)) {
+      selectedValues.remove(currentValue);
+    } else {
+      selectedValues.add(currentValue);
     }
     setState(() {});
     widget.onClick(selectedValues);

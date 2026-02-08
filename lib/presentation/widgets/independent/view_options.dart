@@ -142,11 +142,11 @@ class OpenFlutterViewOptions extends StatelessWidget {
                             IconButton(
                               icon: Icon(sortRules!.sortOrder ==
                                       SortOrder.FromHighestToLowest
-                                  ? FontAwesomeIcons.sortAlphaUp
-                                  : FontAwesomeIcons.sortAlphaDown),
+                                  ? FontAwesomeIcons.arrowUpAZ
+                                  : FontAwesomeIcons.arrowDownAZ),
                               color: sortRules!.sortType == key
                                   ? Theme.of(context).primaryColor
-                                  : Theme.of(context).colorScheme.background,
+                                  : Theme.of(context).colorScheme.surface,
                               onPressed: () {
                                 onSortChanged(
                                     sortRules!.copyWithChangedOrder());

@@ -48,13 +48,17 @@ class OpenFlutterScaffold extends StatelessWidget {
       length: tabBars.length,
       child: Scaffold(
         backgroundColor: background,
-        appBar: title != null
-            ? AppBar(title: Text(title), bottom: tabWidget, actions: <Widget>[
-                Row(children: <Widget>[
-                  Icon(Icons.share),
-                ])
-              ])
-            : null,
+        appBar: AppBar(
+          title: Text(title),
+          bottom: tabWidget,
+          actions: <Widget>[
+            Row(
+              children: <Widget>[
+                Icon(Icons.share),
+              ],
+            )
+          ],
+        ),
         body: body,
         bottomNavigationBar: OpenFlutterBottomMenu(bottomMenuIndex),
       ),

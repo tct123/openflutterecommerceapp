@@ -40,18 +40,15 @@ class OpenFlutterActionCard extends StatelessWidget {
                         child: Text(title,
                             style: _theme.textTheme.displayMedium
                                 ?.copyWith(color: _theme.primaryColor))),
-                    linkText != null
-                        ? Container(
-                            alignment: Alignment.centerRight,
-                            width: width / 3,
-                            child: InkWell(
-                              onTap: (() => {onLinkTap()}),
-                              child: Text(linkText,
-                                  style: _theme.textTheme.displayMedium
-                                      ?.copyWith(
-                                          color: _theme.colorScheme.secondary)),
-                            ))
-                        : Container()
+                    Container(
+                        alignment: Alignment.centerRight,
+                        width: width / 3,
+                        child: InkWell(
+                          onTap: (() => {onLinkTap()}),
+                          child: Text(linkText,
+                              style: _theme.textTheme.displayMedium?.copyWith(
+                                  color: _theme.colorScheme.secondary)),
+                        ))
                   ],
                 ),
                 Container(

@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:openflutterecommerce/data/repositories/abstract/user_repository.dart';
 import 'package:openflutterecommerce/presentation/features/authentication/authentication.dart';
@@ -13,7 +12,6 @@ class SignInBloc extends Bloc<SignInEvent, SignInState> {
     required this.userRepository,
     required this.authenticationBloc,
   }) : super(SignInInitialState());
-  @override
   Stream<SignInState> mapEventToState(
     SignInEvent event,
   ) async* {

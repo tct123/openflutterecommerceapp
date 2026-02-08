@@ -1,4 +1,3 @@
-import 'dart:collection';
 import 'dart:math';
 
 import 'package:flutter/material.dart';
@@ -94,7 +93,7 @@ extension View on Product {
   Widget buildPrice(ThemeData _theme) {
     return Row(children: <Widget>[
       Text(
-        price != null ? '\$' + price.toStringAsFixed(0) : '',
+        '\$' + price.toStringAsFixed(0),
         style: _theme.textTheme.displayMedium?.copyWith(
           decoration: hasDiscountPrice
               ? TextDecoration.lineThrough

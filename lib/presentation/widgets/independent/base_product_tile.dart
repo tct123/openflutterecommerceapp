@@ -32,7 +32,7 @@ class BaseProductTile extends StatelessWidget {
       height: tileHeight,
       padding: EdgeInsets.symmetric(horizontal: AppSizes.widgetSidePadding / 2),
       child: Opacity(
-        opacity: inactiveMessage == null ? 1 : 0.6,
+        opacity: 0.6,
         child: Stack(
           children: <Widget>[
             InkWell(
@@ -58,39 +58,30 @@ class BaseProductTile extends StatelessWidget {
                     padding: EdgeInsets.all(4),
                     child: mainContentBuilder(context),
                   ),
-                  inactiveMessage == null ? Container() : Text(inactiveMessage),
+                  Text(inactiveMessage),
                 ],
               ),
             ),
-            bottomRoundButton == null
-                ? Container()
-                : Positioned(
-                    top: imageHeight - 24,
-                    right: 0,
-                    child: bottomRoundButton,
+            Positioned(
+              top: imageHeight - 24,
+              right: 0,
+              child: bottomRoundButton,
+            ),
+            Positioned(
+              left: 4,
+              top: 6,
+              child: Container(
+                  padding: EdgeInsets.all(AppSizes.linePadding * 1.5),
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(AppSizes.imageRadius),
+                    color:
+                        specialMark == 'New' ? AppColors.red : AppColors.black,
                   ),
-            specialMark == null
-                ? Container()
-                : Positioned(
-                    left: 4,
-                    top: 6,
-                    child: Container(
-                        padding: EdgeInsets.all(AppSizes.linePadding * 1.5),
-                        decoration: BoxDecoration(
-                          borderRadius:
-                              BorderRadius.circular(AppSizes.imageRadius),
-                          color: specialMark == 'New'
-                              ? AppColors.red
-                              : AppColors.black,
-                        ),
-                        child: Text(specialMark,
-                            style: Theme.of(context)
-                                .textTheme
-                                .bodyLarge
-                                ?.copyWith(
-                                    color: AppColors.white,
-                                    fontWeight: FontWeight.bold))),
-                  ),
+                  child: Text(specialMark,
+                      style: Theme.of(context).textTheme.bodyLarge?.copyWith(
+                          color: AppColors.white,
+                          fontWeight: FontWeight.bold))),
+            ),
             onRemove == null
                 ? Container()
                 : Positioned(

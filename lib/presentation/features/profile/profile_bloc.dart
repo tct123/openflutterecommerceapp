@@ -7,7 +7,6 @@ class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
   @override
   ProfileBloc() : super(ProfileInitialState());
 
-  @override
   Stream<ProfileState> mapEventToState(ProfileEvent event) async* {
     if (event is ProfileMyOrdersEvent) {
       yield ProfileMyOrdersProcessingState();

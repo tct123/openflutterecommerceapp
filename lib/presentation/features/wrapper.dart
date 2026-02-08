@@ -43,7 +43,7 @@ class OpenFlutterWrapperState<T> extends State {
 
   @override
   void dispose() {
-    _viewController?.dispose();
+    _viewController.dispose();
     super.dispose();
   }
 

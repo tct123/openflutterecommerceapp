@@ -33,17 +33,9 @@ class OpenFlutterPromoTile extends StatelessWidget {
         children: <Widget>[
           Container(
               width: 85,
-              decoration: item.image != null
-                  ? BoxDecoration(
-                      image: DecorationImage(
-                          fit: BoxFit.fill, image: AssetImage(item.image)))
-                  : BoxDecoration(
-                      color: AppColors.red,
-                      borderRadius: BorderRadius.only(
-                          topLeft: Radius.circular(AppSizes.textFieldRadius),
-                          bottomLeft:
-                              Radius.circular(AppSizes.textFieldRadius)),
-                    ),
+              decoration: BoxDecoration(
+                  image: DecorationImage(
+                      fit: BoxFit.fill, image: AssetImage(item.image))),
               padding: EdgeInsets.all(AppSizes.linePadding * 2),
               child: Row(children: <Widget>[
                 Text(item.discount.toStringAsFixed(0),
