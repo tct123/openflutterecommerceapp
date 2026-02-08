@@ -8,18 +8,21 @@ class ProductCategoryDataSource extends DataSource {
 
     final List<Map<String, dynamic>> maps = await db.query(tableName);
 
-    return List.generate(maps.length, (i) {
-      return ProductCategoryEntity(
-        id: maps[i]['id'],
-        title: maps[i]['title'],
-        description: maps[i]['description'],
-        image: maps[i]['image'],
-        thumb: maps[i]['thumb'],
-        parentId: maps[i]['parentId'],
-        orderNumber: null!,
-        count: null!,
-      );
-    });
+    return List.generate(
+      maps.length,
+      (i) {
+        return ProductCategoryEntity(
+          id: maps[i]['id'],
+          title: maps[i]['title'],
+          description: maps[i]['description'],
+          image: maps[i]['image'],
+          thumb: maps[i]['thumb'],
+          parentId: maps[i]['parentId'],
+          orderNumber: null!,
+          count: null!,
+        );
+      },
+    );
   }
 
   @override
