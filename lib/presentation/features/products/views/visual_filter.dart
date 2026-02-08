@@ -49,22 +49,6 @@ class VisualFilter extends StatelessWidget {
           ],
     );
   }
-
-  Widget _blankChip(BuildContext context, _) {
-    return Padding(
-      padding: EdgeInsets.only(right: AppSizes.sidePadding / 2),
-      child: Chip(
-        padding: EdgeInsets.all(
-          AppSizes.linePadding,
-        ),
-        backgroundColor: Theme.of(context).colorScheme.surface,
-        label: Text(
-          '        ',
-          style: Theme.of(context).textTheme.labelLarge,
-        ),
-      ),
-    );
-  }
 }
 
 typedef FilterChanged = Function(HashTag attribute, bool isSelected);
