@@ -59,7 +59,7 @@ class _OpenFlutterSearchBarState extends State<OpenFlutterSearchBar> {
 
   @override
   void dispose() {
-    _searchKeyController?.dispose();
+    _searchKeyController.dispose();
     super.dispose();
   }
 }

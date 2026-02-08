@@ -37,8 +37,9 @@ class OpenFlutterServiceButton extends StatelessWidget {
         return 'assets/icons/signin/google.png';
       case ServiceType.Facebook:
         return 'assets/icons/signin/facebook.png';
+      default:
+        return '';
     }
-    return '';
   }
 }
 
