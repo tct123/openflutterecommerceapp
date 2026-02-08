@@ -26,7 +26,7 @@ class FavoritesListView extends StatelessWidget {
           } else {
             return Padding(
                 padding: EdgeInsets.symmetric(horizontal: AppSizes.sidePadding),
-                child: state.data![index]?.getListView(
+                child: state.data![index].getListView(
                     context: context,
                     showProductInfo: () {
                       Navigator.of(context).pushNamed(
@@ -49,7 +49,7 @@ class FavoritesListView extends StatelessWidget {
                       Navigator.of(context)
                           .pushNamed(OpenFlutterEcommerceRoutes.cart);
                     },
-                    selectedAttributes: state.data![index]!.favoriteForm));
+                    selectedAttributes: state.data![index].favoriteForm));
           }
         }, childCount: state.data?.length),
       );
