@@ -12,14 +12,12 @@ class OpenFlutterPriceRangeSlider extends StatelessWidget {
   final Function(RangeValues value) onChanged;
 
   const OpenFlutterPriceRangeSlider(
-      {
-      required this.max,
+      {required this.max,
       required this.min,
       required this.label,
       required this.onChanged,
       required this.selectedMin,
-      required this.selectedMax})
-      ;
+      required this.selectedMax});
 
   @override
   Widget build(BuildContext context) {
@@ -42,18 +40,20 @@ class OpenFlutterPriceRangeSlider extends StatelessWidget {
                       width: width / 2,
                       alignment: Alignment.centerLeft,
                       child: Text('\$' + selectedMin.toStringAsFixed(0),
-                          style: _theme.textTheme.headline2?.copyWith(color: _theme.primaryColor))),
+                          style: _theme.textTheme.displayMedium
+                              ?.copyWith(color: _theme.primaryColor))),
                   Container(
                       width: width / 2,
                       alignment: Alignment.centerRight,
                       child: Text('\$' + selectedMax.toStringAsFixed(0),
-                          style: _theme.textTheme.headline2?.copyWith(color: _theme.primaryColor)))
+                          style: _theme.textTheme.displayMedium
+                              ?.copyWith(color: _theme.primaryColor)))
                 ],
               ),
             ),
             RangeSlider(
               divisions: max.toInt() - min.toInt(),
-              activeColor: _theme.accentColor,
+              activeColor: _theme.colorScheme.secondary,
               inactiveColor: _theme.primaryColorLight,
               max: max,
               min: min,

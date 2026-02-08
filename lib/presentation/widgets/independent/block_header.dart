@@ -12,7 +12,12 @@ class OpenFlutterBlockHeader extends StatelessWidget {
   final VoidCallback? onLinkTap;
   final String? description;
 
-  const OpenFlutterBlockHeader({required this.width, required this.title, this.linkText, this.onLinkTap, this.description});
+  const OpenFlutterBlockHeader(
+      {required this.width,
+      required this.title,
+      this.linkText,
+      this.onLinkTap,
+      this.description});
 
   @override
   Widget build(BuildContext context) {
@@ -30,15 +35,15 @@ class OpenFlutterBlockHeader extends StatelessWidget {
               children: <Widget>[
                 Container(
                   width: width - rightLinkWidth,
-                  child: Text(title, style: _theme.textTheme.caption),
+                  child: Text(title, style: _theme.textTheme.bodySmall),
                 ),
                 linkText != null
                     ? Container(
                         width: rightLinkWidth,
                         child: Align(
                           alignment: Alignment.centerRight,
-                          child:
-                              Text(linkText!, style: _theme.textTheme.bodyText2),
+                          child: Text(linkText!,
+                              style: _theme.textTheme.bodyMedium),
                         ),
                       )
                     : Container(),
@@ -47,7 +52,7 @@ class OpenFlutterBlockHeader extends StatelessWidget {
             description != null
                 ? Text(
                     description!,
-                    style: _theme.textTheme.bodyText2,
+                    style: _theme.textTheme.bodyMedium,
                   )
                 : Container()
           ],

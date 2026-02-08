@@ -13,7 +13,7 @@ import '../checkout.dart';
 class AddShippingAddressView extends StatefulWidget {
   final Function? changeView;
 
-  const AddShippingAddressView({ this.changeView}) ;
+  const AddShippingAddressView({this.changeView});
 
   @override
   _AddShippingAddressViewState createState() => _AddShippingAddressViewState();
@@ -64,8 +64,8 @@ class _AddShippingAddressViewState extends State<AddShippingAddressView> {
             Container(
                 padding: EdgeInsets.all(AppSizes.sidePadding),
                 child: Text('An error occured',
-                    style: _theme.textTheme.headline4
-                        ?.copyWith(color: _theme.errorColor)));
+                    style: _theme.textTheme.headlineMedium
+                        ?.copyWith(color: _theme.colorScheme.error)));
           }
         },
         child: BlocBuilder(

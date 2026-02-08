@@ -25,7 +25,6 @@ class OpenFlutterProductReviewItem extends StatelessWidget {
   final double helpfulFontSize;
 
   const OpenFlutterProductReviewItem({
-    
     this.avatarUrl = '',
     this.avatarSize = 40.0,
     this.writerName = '',
@@ -40,7 +39,7 @@ class OpenFlutterProductReviewItem extends StatelessWidget {
     this.isHelpfulMarked = false,
     this.helpfulIconSize = 14.0,
     this.helpfulFontSize = 12.0,
-  }) ;
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -105,7 +104,7 @@ class OpenFlutterProductReviewItem extends StatelessWidget {
       width: double.infinity,
       child: Text(
         writerName,
-        style: Theme.of(context).textTheme.subtitle2,
+        style: Theme.of(context).textTheme.titleSmall,
         textAlign: TextAlign.start,
       ),
     );
@@ -126,7 +125,7 @@ class OpenFlutterProductReviewItem extends StatelessWidget {
         Expanded(
           child: Text(
             reviewDateTime,
-            style: Theme.of(context).textTheme.caption?.copyWith(
+            style: Theme.of(context).textTheme.bodySmall?.copyWith(
                   fontSize: 12,
                 ),
             textAlign: TextAlign.end,
@@ -141,7 +140,7 @@ class OpenFlutterProductReviewItem extends StatelessWidget {
       width: double.infinity,
       child: Text(
         comment,
-        style: Theme.of(context).textTheme.bodyText2?.copyWith(
+        style: Theme.of(context).textTheme.bodyMedium?.copyWith(
               fontSize: 14.0,
             ),
         textAlign: TextAlign.start,
@@ -169,7 +168,8 @@ class OpenFlutterProductReviewItem extends StatelessWidget {
   }
 
   List<Widget> _buildPhotosItems() {
-    var list = List<Widget>.generate(photos!.length, (index) => _buildPhotoItem(photos![index]));
+    var list = List<Widget>.generate(
+        photos!.length, (index) => _buildPhotoItem(photos![index]));
     return list;
   }
 
@@ -184,12 +184,14 @@ class OpenFlutterProductReviewItem extends StatelessWidget {
         child: Image.network(
           photoUrl,
           fit: BoxFit.fill,
-          loadingBuilder: (BuildContext context, Widget child, ImageChunkEvent? loadingProgress) {
+          loadingBuilder: (BuildContext context, Widget child,
+              ImageChunkEvent? loadingProgress) {
             if (loadingProgress == null) return child;
             return Center(
               child: CircularProgressIndicator(
                 value: loadingProgress.expectedTotalBytes != null
-                    ? loadingProgress.cumulativeBytesLoaded / loadingProgress.expectedTotalBytes!.toInt()
+                    ? loadingProgress.cumulativeBytesLoaded /
+                        loadingProgress.expectedTotalBytes!.toInt()
                     : null,
               ),
             );
@@ -214,7 +216,7 @@ class OpenFlutterProductReviewItem extends StatelessWidget {
               child: Text(
                 'Helpful',
                 textAlign: TextAlign.end,
-                style: Theme.of(context).textTheme.caption?.copyWith(
+                style: Theme.of(context).textTheme.bodySmall?.copyWith(
                       color: _getHelpfulColor(context),
                       fontSize: helpfulFontSize,
                     ),
@@ -237,6 +239,8 @@ class OpenFlutterProductReviewItem extends StatelessWidget {
   }
 
   Color _getHelpfulColor(BuildContext context) {
-    return isHelpfulMarked ? Theme.of(context).accentColor : Theme.of(context).unselectedWidgetColor;
+    return isHelpfulMarked
+        ? Theme.of(context).colorScheme.secondary
+        : Theme.of(context).unselectedWidgetColor;
   }
 }

@@ -11,7 +11,8 @@ class OpenFlutterHashTagList extends StatelessWidget {
   final double height;
   final Function onTap;
 
-  const OpenFlutterHashTagList({required this.tags, required this.onTap, required this.height});
+  const OpenFlutterHashTagList(
+      {required this.tags, required this.onTap, required this.height});
 
   @override
   Widget build(BuildContext context) {
@@ -47,7 +48,7 @@ class OpenFlutterHashTagList extends StatelessWidget {
           ),
           child: Text(
             tag.title,
-            style: _theme.textTheme.button,
+            style: _theme.textTheme.labelLarge,
           ),
           width: 100,
           height: 20,

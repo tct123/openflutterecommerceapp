@@ -10,12 +10,10 @@ class OpenFlutterColorSelect extends StatefulWidget {
   final Function(List<Color>) onClick;
 
   const OpenFlutterColorSelect(
-      {
-      required this.availableColors,
+      {required this.availableColors,
       required this.selectedColors,
       required this.label,
-      required this.onClick})
-      ;
+      required this.onClick});
 
   @override
   _OpenFlutterColorSelectState createState() => _OpenFlutterColorSelectState();
@@ -34,14 +32,19 @@ class _OpenFlutterColorSelectState extends State<OpenFlutterColorSelect> {
   Widget build(BuildContext context) {
     var width = MediaQuery.of(context).size.width;
     return Column(children: <Widget>[
-      OpenFlutterBlockSubtitle(title: widget.label, width: width, linkText: '', onLinkTap: (){},),
+      OpenFlutterBlockSubtitle(
+        title: widget.label,
+        width: width,
+        linkText: '',
+        onLinkTap: () {},
+      ),
       Padding(
         padding: EdgeInsets.only(bottom: AppSizes.sidePadding),
       ),
       Container(
         padding: EdgeInsets.symmetric(
-          vertical: AppSizes.sidePadding, 
-          horizontal: AppSizes.sidePadding * 2),
+            vertical: AppSizes.sidePadding,
+            horizontal: AppSizes.sidePadding * 2),
         width: width,
         color: AppColors.white,
         child: Wrap(
@@ -75,7 +78,7 @@ class _OpenFlutterColorSelectState extends State<OpenFlutterColorSelect> {
             Radius.circular(22),
           ),
           border: widget.selectedColors.contains(color)
-              ? Border.all(color: _theme.accentColor)
+              ? Border.all(color: _theme.colorScheme.secondary)
               : null,
         ),
         padding: EdgeInsets.all(4),

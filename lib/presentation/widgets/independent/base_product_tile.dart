@@ -14,8 +14,7 @@ class BaseProductTile extends StatelessWidget {
   final double tileHeight;
 
   const BaseProductTile(
-      {
-      required this.onClick,
+      {required this.onClick,
       required this.inactiveMessage,
       required this.bottomRoundButton,
       required this.image,
@@ -23,8 +22,8 @@ class BaseProductTile extends StatelessWidget {
       this.imageHeight = 184,
       this.imageWidth = AppSizes.tile_width,
       this.tileHeight = AppSizes.tile_height,
-      required this.specialMark, this.onRemove})
-      ;
+      required this.specialMark,
+      this.onRemove});
 
   @override
   Widget build(BuildContext context) {
@@ -50,7 +49,8 @@ class BaseProductTile extends StatelessWidget {
                       decoration: BoxDecoration(
                         image: DecorationImage(image: image, fit: BoxFit.cover),
                         color: AppColors.background,
-                        borderRadius: BorderRadius.circular(AppSizes.imageRadius),
+                        borderRadius:
+                            BorderRadius.circular(AppSizes.imageRadius),
                       ),
                     ),
                   ),
@@ -77,14 +77,19 @@ class BaseProductTile extends StatelessWidget {
                     child: Container(
                         padding: EdgeInsets.all(AppSizes.linePadding * 1.5),
                         decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(AppSizes.imageRadius),
-                          color: specialMark == 'New' ? AppColors.red : AppColors.black,
+                          borderRadius:
+                              BorderRadius.circular(AppSizes.imageRadius),
+                          color: specialMark == 'New'
+                              ? AppColors.red
+                              : AppColors.black,
                         ),
                         child: Text(specialMark,
                             style: Theme.of(context)
                                 .textTheme
-                                .bodyText1
-                                ?.copyWith(color: AppColors.white, fontWeight: FontWeight.bold))),
+                                .bodyLarge
+                                ?.copyWith(
+                                    color: AppColors.white,
+                                    fontWeight: FontWeight.bold))),
                   ),
             onRemove == null
                 ? Container()

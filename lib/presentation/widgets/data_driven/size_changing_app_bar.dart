@@ -17,7 +17,9 @@ class SizeChangingAppBar extends StatelessWidget {
   final VoidCallback onViewChanged;
 
   const SizeChangingAppBar(
-      {required this.title, this.filterRules, this.sortRules,
+      {required this.title,
+      this.filterRules,
+      this.sortRules,
       this.isListView = true,
       required this.onFilterRulesChanged,
       required this.onSortRulesChanged,
@@ -50,7 +52,7 @@ class SizeChangingAppBar extends StatelessWidget {
               padding: EdgeInsets.symmetric(vertical: 8, horizontal: 16),
               child: Text(
                 title ?? 'Loading...',
-                style: Theme.of(context).textTheme.caption,
+                style: Theme.of(context).textTheme.bodySmall,
               ),
             ),
             Container(
@@ -58,8 +60,8 @@ class SizeChangingAppBar extends StatelessWidget {
               child: VisualFilter(
                   filterRules!.hashTags, filterRules!.selectedHashTags,
                   (updateValue, isSelected) {
-                BlocProvider.of<ProductsBloc>(context).add(
-                    ProductChangeHashTagEvent(updateValue, isSelected));
+                BlocProvider.of<ProductsBloc>(context)
+                    .add(ProductChangeHashTagEvent(updateValue, isSelected));
               }),
             ),
             OpenFlutterViewOptions(

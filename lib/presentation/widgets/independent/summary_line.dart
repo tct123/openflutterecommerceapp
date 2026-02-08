@@ -5,23 +5,27 @@ class OpenFlutterSummaryLine extends StatelessWidget {
   final String title;
   final String summary;
 
-  const OpenFlutterSummaryLine({ required this.title, required this.summary}) ;
+  const OpenFlutterSummaryLine({required this.title, required this.summary});
 
   @override
   Widget build(BuildContext context) {
     var width = MediaQuery.of(context).size.width - AppSizes.sidePadding * 2;
     var _theme = Theme.of(context);
     return Container(
-        padding: EdgeInsets.symmetric(horizontal: AppSizes.sidePadding, vertical: AppSizes.linePadding),
+        padding: EdgeInsets.symmetric(
+            horizontal: AppSizes.sidePadding, vertical: AppSizes.linePadding),
         child: Row(
           children: <Widget>[
-            Container(width: width / 2, child: Text(title, style: _theme.textTheme.headline2)),
+            Container(
+                width: width / 2,
+                child: Text(title, style: _theme.textTheme.displayMedium)),
             Container(
                 alignment: Alignment.centerRight,
                 width: width / 2,
                 child: Text(summary,
-                    style:
-                        _theme.textTheme.headline2?.copyWith(fontWeight: FontWeight.bold, color: _theme.primaryColor))),
+                    style: _theme.textTheme.displayMedium?.copyWith(
+                        fontWeight: FontWeight.bold,
+                        color: _theme.primaryColor))),
           ],
         ));
   }

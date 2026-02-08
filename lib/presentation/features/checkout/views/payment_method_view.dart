@@ -14,7 +14,7 @@ import '../checkout.dart';
 class PaymentMethodView extends StatefulWidget {
   final Function? changeView;
 
-  const PaymentMethodView({ this.changeView}) ;
+  const PaymentMethodView({this.changeView});
 
   @override
   _PaymentMethodViewState createState() => _PaymentMethodViewState();
@@ -60,8 +60,8 @@ class _PaymentMethodViewState extends State<PaymentMethodView> {
             Container(
                 padding: EdgeInsets.all(AppSizes.sidePadding),
                 child: Text('An error occured',
-                    style: _theme.textTheme.headline4
-                        ?.copyWith(color: _theme.errorColor)));
+                    style: _theme.textTheme.headlineMedium
+                        ?.copyWith(color: _theme.colorScheme.error)));
           }
         },
         child: BlocBuilder(

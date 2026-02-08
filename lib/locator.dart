@@ -40,43 +40,55 @@ void init() {
   sl.registerLazySingleton<NetworkStatus>(() => NetworkStatusImpl());
 
   //get home page products use case
-  sl.registerLazySingleton<GetHomePageProductsUseCase>(() => GetHomePageProductsUseCaseImpl());
-  
+  sl.registerLazySingleton<GetHomePageProductsUseCase>(
+      () => GetHomePageProductsUseCaseImpl());
+
   //checkout start use case
-  sl.registerLazySingleton<CheckoutStartUseCase>(() => CheckoutStartUseCaseImpl());
-  
+  sl.registerLazySingleton<CheckoutStartUseCase>(
+      () => CheckoutStartUseCaseImpl());
+
   //get promo coupons
   sl.registerLazySingleton<GetPromosUseCase>(() => GetPromosUseCaseImpl());
-  
+
   //remove from favorites
-  sl.registerLazySingleton<RemoveFromFavoritesUseCase>(() => RemoveFromFavoritesUseCaseImpl());
-  
+  sl.registerLazySingleton<RemoveFromFavoritesUseCase>(
+      () => RemoveFromFavoritesUseCaseImpl());
+
   //get favorite product list
-  sl.registerLazySingleton<GetFavoriteProductsUseCase>(() => GetFavoriteProductsUseCaseImpl());
-  
-  //change cart quantity use case 
-  sl.registerLazySingleton<RemoveProductFromCartUseCase>(() => RemoveProductFromCartUseCaseImpl());
-  
-  //change cart quantity use case 
-  sl.registerLazySingleton<ChangeCartItemQuantityUseCase>(() => ChangeCartItemQuantityUseCaseImpl());
+  sl.registerLazySingleton<GetFavoriteProductsUseCase>(
+      () => GetFavoriteProductsUseCaseImpl());
 
-  //get cart product use case  
-  sl.registerLazySingleton<GetCartProductsUseCase>(() => GetCartProductsUseCaseImpl());
+  //change cart quantity use case
+  sl.registerLazySingleton<RemoveProductFromCartUseCase>(
+      () => RemoveProductFromCartUseCaseImpl());
 
-  //add to favorite use case 
-  sl.registerLazySingleton<AddToFavoritesUseCase>(() => AddToFavoritesUseCaseImpl());
+  //change cart quantity use case
+  sl.registerLazySingleton<ChangeCartItemQuantityUseCase>(
+      () => ChangeCartItemQuantityUseCaseImpl());
+
+  //get cart product use case
+  sl.registerLazySingleton<GetCartProductsUseCase>(
+      () => GetCartProductsUseCaseImpl());
+
+  //add to favorite use case
+  sl.registerLazySingleton<AddToFavoritesUseCase>(
+      () => AddToFavoritesUseCaseImpl());
 
   //add to cart use case
-  sl.registerLazySingleton<AddProductToCartUseCase>(() => AddProductToCartUseCaseImpl());
+  sl.registerLazySingleton<AddProductToCartUseCase>(
+      () => AddProductToCartUseCaseImpl());
 
   //get categories list by filter use case
-  sl.registerLazySingleton<FindCategoriesByFilterUseCase>(() => FindCategoriesByFilterUseCaseImpl());
+  sl.registerLazySingleton<FindCategoriesByFilterUseCase>(
+      () => FindCategoriesByFilterUseCaseImpl());
 
   //get product list by filter use case
-  sl.registerLazySingleton<FindProductsByFilterUseCase>(() => FindProductsByFilterUseCaseImpl());
+  sl.registerLazySingleton<FindProductsByFilterUseCase>(
+      () => FindProductsByFilterUseCaseImpl());
 
   //get product details by id use case
-  sl.registerLazySingleton<GetProductByIdUseCase>(() => GetProductByIdUseCaseImpl());
+  sl.registerLazySingleton<GetProductByIdUseCase>(
+      () => GetProductByIdUseCaseImpl());
 
   //Singleton for HTTP request
   sl.registerLazySingleton(() => http.Client());
@@ -84,11 +96,11 @@ void init() {
   sl.registerLazySingleton<WoocommercWrapperAbstract>(
     () => WoocommerceWrapper(client: sl()),
   );
-  
+
   sl.registerLazySingleton<CategoryRepository>(
     () => CategoryRepositoryImpl(),
   );
-  
+
   sl.registerLazySingleton<RemoteUserRepository>(
     () => RemoteUserRepository(),
   );
@@ -96,7 +108,7 @@ void init() {
   sl.registerLazySingleton<UserRepository>(
     () => UserRepositoryImpl(remoteUserRepository: sl()),
   );
-  
+
   sl.registerLazySingleton<ProductRepository>(
     () => ProductRepositoryImpl(),
   );
@@ -118,6 +130,5 @@ void init() {
   );
 
   sl.registerLazySingleton<PaymentMethodRepository>(
-    () => PaymentMethodRepositoryImpl(PaymentMethodDataStorage([]))
-  );  
+      () => PaymentMethodRepositoryImpl(PaymentMethodDataStorage([])));
 }

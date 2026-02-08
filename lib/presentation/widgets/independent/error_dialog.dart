@@ -5,7 +5,7 @@ import 'package:openflutterecommerce/config/theme.dart';
 class ErrorDialog extends StatelessWidget {
   final String mainText;
 
-  const ErrorDialog({ required this.mainText}) ;
+  const ErrorDialog({required this.mainText});
 
   @override
   Widget build(BuildContext context) {
@@ -28,7 +28,10 @@ class ErrorDialog extends StatelessWidget {
           Padding(
             padding: EdgeInsets.symmetric(horizontal: 16.0),
             child: Text(mainText,
-                style: Theme.of(context).textTheme.headline4?.copyWith(color: Theme.of(context).errorColor)),
+                style: Theme.of(context)
+                    .textTheme
+                    .headlineMedium
+                    ?.copyWith(color: Theme.of(context).colorScheme.error)),
           ),
           SizedBox(
             height: 12.0,

@@ -11,7 +11,7 @@ import '../../wrapper.dart';
 class Success1View extends StatefulWidget {
   final Function changeView;
 
-  const Success1View({ required this.changeView}) ;
+  const Success1View({required this.changeView});
 
   @override
   _Success1ViewState createState() => _Success1ViewState();
@@ -25,7 +25,9 @@ class _Success1ViewState extends State<Success1View> {
     return Container(
         decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(AppSizes.imageRadius),
-            image: DecorationImage(fit: BoxFit.fitHeight, image: AssetImage('assets/images/checkout/success.png'))),
+            image: DecorationImage(
+                fit: BoxFit.fitHeight,
+                image: AssetImage('assets/images/checkout/success.png'))),
         child: Padding(
             padding: EdgeInsets.symmetric(horizontal: AppSizes.sidePadding * 3),
             child: Column(
@@ -33,15 +35,17 @@ class _Success1ViewState extends State<Success1View> {
               children: <Widget>[
                 Padding(
                   padding: EdgeInsets.only(top: AppSizes.sidePadding * 3),
-                  child: Text('Success!', style: _theme.textTheme.caption),
+                  child: Text('Success!', style: _theme.textTheme.bodySmall),
                 ),
                 Padding(
                     padding: EdgeInsets.all(AppSizes.sidePadding),
-                    child: Text('Your order will be delivered soon. Thank you for choosing our app!',
-                        style: _theme.textTheme.headline4)),
+                    child: Text(
+                        'Your order will be delivered soon. Thank you for choosing our app!',
+                        style: _theme.textTheme.headlineMedium)),
                 OpenFlutterButton(
                   title: 'Continue shopping',
-                  onPressed: (() => {widget.changeView(changeType: ViewChangeType.Forward)}),
+                  onPressed: (() =>
+                      {widget.changeView(changeType: ViewChangeType.Forward)}),
                 ),
               ],
             )));

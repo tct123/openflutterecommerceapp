@@ -9,10 +9,7 @@ class VisualFilter extends StatelessWidget {
   final HashMap<HashTag, bool> selecteHashTags;
   final FilterChanged onFilterChanged;
 
-  const VisualFilter(
-    this.hashTags,
-    this.selecteHashTags,
-    this.onFilterChanged);
+  const VisualFilter(this.hashTags, this.selecteHashTags, this.onFilterChanged);
 
   @override
   Widget build(BuildContext context) {
@@ -21,28 +18,29 @@ class VisualFilter extends StatelessWidget {
           scrollDirection: Axis.horizontal, itemBuilder: _blankChip);
     } else {
       List<Widget> widgetList = hashTags
-        ?.map((optionHashTag) => 
-          Padding(
-            padding: EdgeInsets.only(right: AppSizes.sidePadding / 2),
-            child: ChoiceChip(
-              selected: selecteHashTags!=null ? 
-                selecteHashTags[optionHashTag] ?? false : false,
-              padding: EdgeInsets.all(
-                AppSizes.linePadding,
-              ),
-              backgroundColor: Theme.of(context).primaryColor,
-              selectedColor: Theme.of(context).accentColor,
-              label: Text(
-                optionHashTag.title,
-                style: Theme.of(context).textTheme.button,
-              ),
-              onSelected: (value) {
-                onFilterChanged(optionHashTag, value);
-              },
-            ),
-          ))
-        ?.toList(growable: false) ?? [];
-        
+              ?.map((optionHashTag) => Padding(
+                    padding: EdgeInsets.only(right: AppSizes.sidePadding / 2),
+                    child: ChoiceChip(
+                      selected: selecteHashTags != null
+                          ? selecteHashTags[optionHashTag] ?? false
+                          : false,
+                      padding: EdgeInsets.all(
+                        AppSizes.linePadding,
+                      ),
+                      backgroundColor: Theme.of(context).primaryColor,
+                      selectedColor: Theme.of(context).colorScheme.secondary,
+                      label: Text(
+                        optionHashTag.title,
+                        style: Theme.of(context).textTheme.labelLarge,
+                      ),
+                      onSelected: (value) {
+                        onFilterChanged(optionHashTag, value);
+                      },
+                    ),
+                  ))
+              ?.toList(growable: false) ??
+          [];
+
       return ListView(
         scrollDirection: Axis.horizontal,
         children: <Widget>[
@@ -50,8 +48,7 @@ class VisualFilter extends StatelessWidget {
                 width: 16,
               )
             ] +
-            widgetList
-            +
+            widgetList +
             [
               SizedBox(
                 width: 16,
@@ -68,10 +65,10 @@ class VisualFilter extends StatelessWidget {
           padding: EdgeInsets.all(
             AppSizes.linePadding,
           ),
-          backgroundColor: Theme.of(context).backgroundColor,
+          backgroundColor: Theme.of(context).colorScheme.background,
           label: Text(
             '        ',
-            style: Theme.of(context).textTheme.button,
+            style: Theme.of(context).textTheme.labelLarge,
           ),
         ));
   }

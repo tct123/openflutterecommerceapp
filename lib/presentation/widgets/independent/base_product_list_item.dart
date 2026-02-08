@@ -13,10 +13,15 @@ class BaseProductListItem extends StatelessWidget {
   final double imageWidth;
 
   const BaseProductListItem(
-      { this.onClick,
+      {this.onClick,
       required this.inactiveMessage,
-      required this.bottomRoundButton, this.image,
-      required this.mainContentBuilder, this.imageHeight = 125, this.imageWidth = 125, this.specialMark, this.onRemove});
+      required this.bottomRoundButton,
+      this.image,
+      required this.mainContentBuilder,
+      this.imageHeight = 125,
+      this.imageWidth = 125,
+      this.specialMark,
+      this.onRemove});
 
   @override
   Widget build(BuildContext context) {
@@ -95,7 +100,7 @@ class BaseProductListItem extends StatelessWidget {
                         child: Text(specialMark!,
                             style: Theme.of(context)
                                 .textTheme
-                                .bodyText1
+                                .bodyLarge
                                 ?.copyWith(
                                     color: AppColors.white,
                                     fontWeight: FontWeight.bold))),

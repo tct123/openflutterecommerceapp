@@ -19,7 +19,7 @@ class Main1View extends StatefulWidget {
   final Function? changeView;
   final List<Product>? products;
 
-  const Main1View({ this.products, this.changeView}) ;
+  const Main1View({this.products, this.changeView});
 
   @override
   _Main1ViewState createState() => _Main1ViewState();
@@ -31,7 +31,8 @@ class _Main1ViewState extends State<Main1View> {
     var _theme = Theme.of(context);
     var width = MediaQuery.of(context).size.width;
     var widgetWidth = width - AppSizes.sidePadding * 2;
-    return BlocBuilder<HomeBloc, HomeState>(builder: (BuildContext context, HomeState state) {
+    return BlocBuilder<HomeBloc, HomeState>(
+        builder: (BuildContext context, HomeState state) {
       return SingleChildScrollView(
         child: Column(
           children: <Widget>[
@@ -55,18 +56,22 @@ class _Main1ViewState extends State<Main1View> {
                       width: width / 2,
                       child: FittedBox(
                         fit: BoxFit.scaleDown,
-                        child: Text(translate('fashionSale'), style: _theme.textTheme.headline5),
+                        child: Text(translate('fashionSale'),
+                            style: _theme.textTheme.headlineSmall),
                       ),
                     ),
                     Container(
                       padding: EdgeInsets.only(
-                          left: AppSizes.sidePadding, bottom: AppSizes.sidePadding, top: AppSizes.sidePadding),
+                          left: AppSizes.sidePadding,
+                          bottom: AppSizes.sidePadding,
+                          top: AppSizes.sidePadding),
                       width: 160,
                       child: OpenFlutterButton(
                         title: 'Check',
                         width: 160,
                         height: 48,
-                        onPressed: (() => widget.changeView!(changeType: ViewChangeType.Forward)),
+                        onPressed: (() => widget.changeView!(
+                            changeType: ViewChangeType.Forward)),
                       ),
                     )
                   ],
@@ -76,7 +81,8 @@ class _Main1ViewState extends State<Main1View> {
               title: 'New',
               linkText: 'View All',
               onLinkTap: () => {
-                Navigator.of(context).pushNamed(OpenFlutterEcommerceRoutes.shop, arguments: CategoriesParameters(0))
+                Navigator.of(context).pushNamed(OpenFlutterEcommerceRoutes.shop,
+                    arguments: CategoriesParameters(0))
               },
               description: 'You’ve never seen it before!',
             ),
@@ -84,15 +90,17 @@ class _Main1ViewState extends State<Main1View> {
               width: widgetWidth,
               products: widget.products!,
               onFavoritesTap: ((Product product) => {
-                    BlocProvider.of<HomeBloc>(context)
-                        .add(HomeAddToFavoriteEvent(isFavorite: !product.isFavorite, product: product))
+                    BlocProvider.of<HomeBloc>(context).add(
+                        HomeAddToFavoriteEvent(
+                            isFavorite: !product.isFavorite, product: product))
                   }),
             ),
             OpenFlutterButton(
               title: 'Next Home Page',
               width: 160,
               height: 48,
-              onPressed: (() => widget.changeView!(changeType: ViewChangeType.Forward)),
+              onPressed: (() =>
+                  widget.changeView!(changeType: ViewChangeType.Forward)),
             )
           ],
         ),

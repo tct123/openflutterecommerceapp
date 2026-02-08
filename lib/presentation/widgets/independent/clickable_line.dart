@@ -12,15 +12,13 @@ class OpenFlutterClickableLine extends StatelessWidget {
   final Function(SortRules) onTap;
 
   const OpenFlutterClickableLine(
-      {
-      required this.width,
+      {required this.width,
       required this.height,
       required this.title,
       required this.onTap,
       required this.sortRules,
       required this.backgroundColor,
-      required this.textColor})
-      ;
+      required this.textColor});
 
   @override
   Widget build(BuildContext context) {
@@ -28,12 +26,15 @@ class OpenFlutterClickableLine extends StatelessWidget {
     return InkWell(
         onTap: (() => {onTap(sortRules)}),
         child: Container(
-            padding: EdgeInsets.symmetric(horizontal: AppSizes.sidePadding, vertical: AppSizes.linePadding),
+            padding: EdgeInsets.symmetric(
+                horizontal: AppSizes.sidePadding,
+                vertical: AppSizes.linePadding),
             alignment: Alignment.centerLeft,
             height: height,
             width: width,
             color: backgroundColor,
             child: Text(title,
-                style: _theme.textTheme.headline4?.copyWith(fontWeight: FontWeight.normal, color: textColor))));
+                style: _theme.textTheme.headlineMedium?.copyWith(
+                    fontWeight: FontWeight.normal, color: textColor))));
   }
 }

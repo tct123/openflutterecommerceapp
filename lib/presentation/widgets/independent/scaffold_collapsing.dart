@@ -16,8 +16,12 @@ class OpenFlutterCollapsingScaffold extends StatelessWidget {
   final TabController tabController;
 
   const OpenFlutterCollapsingScaffold(
-      { this.background, required this.title, required this.body, required this.bottomMenuIndex, required this.tabBarList, required this.tabController})
-      ;
+      {this.background,
+      required this.title,
+      required this.body,
+      required this.bottomMenuIndex,
+      required this.tabBarList,
+      required this.tabController});
 
   @override
   Widget build(BuildContext context) {
@@ -54,9 +58,11 @@ class OpenFlutterCollapsingScaffold extends StatelessWidget {
             labelStyle: TextStyle(fontWeight: FontWeight.bold),
             tabs: tabBars,
             controller: tabController,
-            indicatorColor: _theme.accentColor,
+            indicatorColor: _theme.colorScheme.secondary,
             indicatorSize: TabBarIndicatorSize.tab)
-        : TabBar(tabs: [],);
+        : TabBar(
+            tabs: [],
+          );
 
     return <Widget>[
       SliverAppBar(
@@ -91,13 +97,15 @@ class OpenFlutterCollapsingScaffold extends StatelessWidget {
               return Stack(
                 children: <Widget>[
                   Padding(
-                    padding: const EdgeInsets.only(top: kToolbarHeight / 4, left: 0.0),
+                    padding: const EdgeInsets.only(
+                        top: kToolbarHeight / 4, left: 0.0),
                     child: Transform.translate(
                       child: Text(
                         title,
-                        style: _theme.textTheme.caption,
+                        style: _theme.textTheme.bodySmall,
                       ),
-                      offset: Offset(dx, constraints.maxHeight - kToolbarHeight),
+                      offset:
+                          Offset(dx, constraints.maxHeight - kToolbarHeight),
                     ),
                   ),
                 ],

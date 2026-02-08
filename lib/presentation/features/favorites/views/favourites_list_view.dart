@@ -17,46 +17,41 @@ class FavoritesListView extends StatelessWidget {
     return BlocBuilder<FavouriteBloc, FavouriteState>(
         builder: (context, state) {
       return SliverList(
-        delegate: SliverChildBuilderDelegate(
-          (BuildContext context, int index) {
-            if (state.data == null) {
-              return Padding(
+        delegate: SliverChildBuilderDelegate((BuildContext context, int index) {
+          if (state.data == null) {
+            return Padding(
+              padding: EdgeInsets.symmetric(horizontal: AppSizes.sidePadding),
+              child: BlankProductListItem(),
+            );
+          } else {
+            return Padding(
                 padding: EdgeInsets.symmetric(horizontal: AppSizes.sidePadding),
-                child: BlankProductListItem(),
-              );
-            } else {
-              return Padding(
-                  padding:
-                      EdgeInsets.symmetric(horizontal: AppSizes.sidePadding),
-                  child: state.data![index]?.getListView(
+                child: state.data![index]?.getListView(
                     context: context,
                     showProductInfo: () {
                       Navigator.of(context).pushNamed(
                           OpenFlutterEcommerceRoutes.product,
                           arguments: ProductDetailsParameters(
                               state.data![index].product.id,
-                              state.data![index].product.categories.isNotEmpty ?
-                                state.data![index].product.categories[0].id: 0,
+                              state.data![index].product.categories.isNotEmpty
+                                  ? state.data![index].product.categories[0].id
+                                  : 0,
                               selectedAttributes:
                                   state.data![index].favoriteForm));
                     },
                     onRemoveFromFavorites: () {
-                      BlocProvider.of<FavouriteBloc>(context).add(
-                          RemoveFromFavoriteEvent(
-                              state.data![index]));
+                      BlocProvider.of<FavouriteBloc>(context)
+                          .add(RemoveFromFavoriteEvent(state.data![index]));
                     },
                     onAddToCart: () {
                       BlocProvider.of<FavouriteBloc>(context)
                           .add(AddToCartEvent(state.data![index]));
                       Navigator.of(context)
-                        .pushNamed(OpenFlutterEcommerceRoutes.cart);
+                          .pushNamed(OpenFlutterEcommerceRoutes.cart);
                     },
-                    selectedAttributes: state.data![index]!.favoriteForm
-                  ));
-            }
-          },
-          childCount: state.data?.length
-        ),
+                    selectedAttributes: state.data![index]!.favoriteForm));
+          }
+        }, childCount: state.data?.length),
       );
     });
   }

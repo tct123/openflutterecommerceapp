@@ -18,7 +18,7 @@ class Main2View extends StatefulWidget {
   final List<Product>? salesProducts;
   final List<Product>? newProducts;
 
-  const Main2View({ this.changeView, this.salesProducts, this.newProducts}) ;
+  const Main2View({this.changeView, this.salesProducts, this.newProducts});
 
   @override
   _Main2ViewState createState() => _Main2ViewState();
@@ -48,46 +48,53 @@ class _Main2ViewState extends State<Main2View> {
               Container(
                   padding: EdgeInsets.only(left: AppSizes.sidePadding),
                   width: width,
-                  child: Text('Street clothes', style: _theme.textTheme.headline5?.copyWith(fontSize: 34)))
+                  child: Text('Street clothes',
+                      style: _theme.textTheme.headlineSmall
+                          ?.copyWith(fontSize: 34)))
             ],
           )),
       OpenFlutterBlockHeader(
         width: widgetWidth,
         title: 'Sale',
         linkText: 'View All',
-        onLinkTap: () =>
-            {Navigator.of(context).pushNamed(OpenFlutterEcommerceRoutes.shop, arguments: CategoriesParameters(2))},
+        onLinkTap: () => {
+          Navigator.of(context).pushNamed(OpenFlutterEcommerceRoutes.shop,
+              arguments: CategoriesParameters(2))
+        },
         description: 'Super summer sale',
       ),
       OpenFlutterProductListView(
           width: widgetWidth,
           products: widget.salesProducts!,
           onFavoritesTap: ((Product product) => {
-                BlocProvider.of<HomeBloc>(context)
-                    .add(HomeAddToFavoriteEvent(isFavorite: !product.isFavorite, product: product))
+                BlocProvider.of<HomeBloc>(context).add(HomeAddToFavoriteEvent(
+                    isFavorite: !product.isFavorite, product: product))
               })),
       Padding(padding: EdgeInsets.only(top: AppSizes.sidePadding)),
       OpenFlutterBlockHeader(
         width: widgetWidth,
         title: 'New',
         linkText: 'View All',
-        onLinkTap: () =>
-            {Navigator.of(context).pushNamed(OpenFlutterEcommerceRoutes.shop, arguments: CategoriesParameters(3))},
+        onLinkTap: () => {
+          Navigator.of(context).pushNamed(OpenFlutterEcommerceRoutes.shop,
+              arguments: CategoriesParameters(3))
+        },
         description: 'You’ve never seen it before!',
       ),
       OpenFlutterProductListView(
         width: widgetWidth,
         products: widget.newProducts!,
         onFavoritesTap: ((Product product) => {
-              BlocProvider.of<HomeBloc>(context)
-                  .add(HomeAddToFavoriteEvent(isFavorite: !product.isFavorite, product: product))
+              BlocProvider.of<HomeBloc>(context).add(HomeAddToFavoriteEvent(
+                  isFavorite: !product.isFavorite, product: product))
             }),
       ),
       OpenFlutterButton(
         title: 'Next Home Page',
         width: 160,
         height: 48,
-        onPressed: (() => widget.changeView!(changeType: ViewChangeType.Forward)),
+        onPressed: (() =>
+            widget.changeView!(changeType: ViewChangeType.Forward)),
       )
     ]));
   }

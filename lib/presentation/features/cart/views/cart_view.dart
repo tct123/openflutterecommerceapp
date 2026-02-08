@@ -20,7 +20,7 @@ class CartView extends StatefulWidget {
   final List<Product>? products;
   final Function changeView;
 
-  const CartView({this.products, required this.changeView}) ;
+  const CartView({this.products, required this.changeView});
 
   @override
   _CartViewState createState() => _CartViewState();
@@ -51,8 +51,8 @@ class _CartViewState extends State<CartView> {
         Container(
             padding: EdgeInsets.all(AppSizes.sidePadding),
             child: Text('An error occured',
-                style: _theme.textTheme.headline4
-                    ?.copyWith(color: _theme.errorColor)));
+                style: _theme.textTheme.headlineMedium
+                    ?.copyWith(color: _theme.colorScheme.error)));
       }
     }, child: BlocBuilder<CartBloc, CartState>(builder: (context, state) {
       if (state is CartLoadedState) {
