@@ -66,13 +66,11 @@ class OpenFlutterEcommerceTheme {
           fontFamily: 'Metropolis',
           fontWeight: FontWeight.w400,
         ),
-        toolbarTextStyle: theme.textTheme.copyWith(
-          bodyMedium: TextStyle(
-            color: AppColors.black,
-            fontSize: 18,
-            fontFamily: "Metropolis",
-            fontWeight: FontWeight.w400,
-          ),
+        toolbarTextStyle: TextStyle(
+          color: AppColors.black,
+          fontSize: 18,
+          fontFamily: "Metropolis",
+          fontWeight: FontWeight.w400,
         ),
       ),
       textTheme: theme.textTheme
