@@ -30,7 +30,7 @@ abstract class ProductsState extends Equatable {
   });
 
   ProductsState getLoading() {
-    return copyWith(data: null!);
+    return copyWith(data: null);
   }
 
   bool get isProductsLoading => data == null;
@@ -38,7 +38,7 @@ abstract class ProductsState extends Equatable {
   bool get hasError => error != null;
 
   @override
-  List<Object> get props => [data!, filterRules!, sortBy!];
+  List<Object?> get props => [data, filterRules, sortBy];
 
   @override
   bool get stringify => true;
@@ -67,10 +67,10 @@ class ProductsListViewState extends ProductsState {
     String? error,
   }) {
     return ProductsListViewState(
-      data: data ?? this.data,
-      filterRules: filterRules ?? this.filterRules,
-      sortBy: sortBy ?? this.sortBy,
-      error: error,
+      data: this.data!,
+      filterRules: this.filterRules!,
+      sortBy: this.sortBy!,
+      error: error!,
     );
   }
 }
@@ -93,10 +93,10 @@ class ProductsTileViewState extends ProductsState {
     String? error,
   }) {
     return ProductsTileViewState(
-      data: this.data!,
-      filterRules: this.filterRules!,
-      sortBy: this.sortBy!,
-      error: error!,
+      data: data ?? this.data,
+      filterRules: filterRules ?? this.filterRules,
+      sortBy: sortBy ?? this.sortBy,
+      error: error ?? this.error,
     );
   }
 

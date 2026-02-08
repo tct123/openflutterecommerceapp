@@ -35,7 +35,7 @@ class ProductsListView extends StatelessWidget {
                           OpenFlutterEcommerceRoutes.product,
                           arguments: ProductDetailsParameters(
                               state.data!.products[index].id,
-                              state.data!.category!.id));
+                              state.data!.category.id));
                     },
                     onFavoritesClick: () {
                       BlocProvider.of<ProductsBloc>(context).add(
@@ -46,7 +46,7 @@ class ProductsListView extends StatelessWidget {
                   ));
             }
           },
-          childCount: state.data?.products?.length ?? 20,
+          childCount: state.data?.products.length ?? 20,
         ),
       );
     });
