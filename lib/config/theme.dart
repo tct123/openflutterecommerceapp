@@ -48,7 +48,7 @@ class OpenFlutterEcommerceTheme {
     return theme.copyWith(
       primaryColor: AppColors.black,
       primaryColorLight: AppColors.lightGray,
-      bottomAppBarTheme: BottomAppBarTheme(
+      bottomAppBarTheme: BottomAppBarThemeData(
         color: AppColors.lightGray,
       ),
       dialogBackgroundColor: AppColors.backgroundLight,
