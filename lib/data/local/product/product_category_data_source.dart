@@ -18,8 +18,8 @@ class ProductCategoryDataSource extends DataSource {
           image: maps[i]['image'],
           thumb: maps[i]['thumb'],
           parentId: maps[i]['parentId'],
-          orderNumber: null!,
-          count: null!,
+          orderNumber: null,
+          count: null,
         );
       },
     );
@@ -39,8 +39,8 @@ class ProductCategoryDataSource extends DataSource {
       image: maps[0]['image'],
       thumb: maps[0]['thumb'],
       parentId: maps[0]['parentId'],
-      orderNumber: null!,
-      count: null!,
+      orderNumber: null,
+      count: null,
     );
   }
 

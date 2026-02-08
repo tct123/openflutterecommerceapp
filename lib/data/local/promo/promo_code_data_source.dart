@@ -17,7 +17,7 @@ class PromoCodeDataSource extends DataSource {
         discountPercent: maps[i]['discountPercent'],
         belongsToUser: maps[i]['belongsToUser'].toString() == '1',
         wasUsed: maps[i]['wasUsed'].toString() == '1',
-        dateExpires: null!,
+        dateExpires: null,
       );
     });
   }
@@ -37,7 +37,7 @@ class PromoCodeDataSource extends DataSource {
       discountPercent: maps[0]['discountPercent'],
       belongsToUser: maps[0]['belongsToUser'].toString() == '1',
       wasUsed: maps[0]['wasUsed'].toString() == '1',
-      dateExpires: null!,
+      dateExpires: null,
     );
   }
 

@@ -49,7 +49,7 @@ class OpenFlutterButton extends StatelessWidget {
               borderRadius: BorderRadius.circular(AppSizes.buttonRadius),
               boxShadow: [
                 BoxShadow(
-                    color: backgroundColor.withOpacity(0.3),
+                    color: backgroundColor.withValues(alpha:(0.3),
                     blurRadius: 4.0,
                     offset: Offset(0.0, 5.0)),
               ]),

@@ -57,7 +57,7 @@ class Product extends Equatable {
     required this.categories,
     required this.hashTags,
     this.isFavorite = false,
-  }) : created = created ?? DateTime.now();
+  }) : created = created;
 
   Product favorite(bool isFavorite) {
     return Product(id,

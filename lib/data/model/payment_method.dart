@@ -28,12 +28,12 @@ class PaymentMethodModel extends PaymentMethodEntity {
       int? cvv,
       bool? isDefault}) {
     return PaymentMethodModel(
-        id: id! ?? id,
-        nameOnCard: nameOnCard! ?? nameOnCard,
-        cardNumber: cardNumber! ?? cardNumber,
-        expiryDateMonth: expiryDateMonth! ?? expiryDateMonth,
-        expiryDateYear: expiryDateYear! ?? expiryDateYear,
-        cvv: cvv! ?? cvv,
-        isDefault: isDefault! ?? isDefault);
+        id: id!,
+        nameOnCard: nameOnCard!,
+        cardNumber: cardNumber!,
+        expiryDateMonth: expiryDateMonth!,
+        expiryDateYear: expiryDateYear!,
+        cvv: cvv!,
+        isDefault: isDefault!);
   }
 }

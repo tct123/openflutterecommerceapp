@@ -25,9 +25,9 @@ class ProductDataSource extends DataSource {
               description: '',
               image: '',
               thumb: '',
-              parentId: null!,
-              orderNumber: null!,
-              count: null!)
+              parentId: null,
+              orderNumber: null,
+              count: null)
         ],
         amount: maps[i]['amount'],
         description: maps[i]['description'],
@@ -64,9 +64,9 @@ class ProductDataSource extends DataSource {
             description: '',
             image: '',
             thumb: '',
-            parentId: null!,
-            orderNumber: null!,
-            count: null!)
+            parentId: null,
+            orderNumber: null,
+            count: null)
       ],
       amount: maps[0]['amount'],
       description: maps[0]['description'],

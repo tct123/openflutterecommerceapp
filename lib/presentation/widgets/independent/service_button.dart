@@ -21,7 +21,7 @@ class OpenFlutterServiceButton extends StatelessWidget {
               borderRadius: BorderRadius.circular(AppSizes.buttonRadius),
               boxShadow: [
                 BoxShadow(
-                    color: AppColors.lightGray.withOpacity(0.3),
+                    color: AppColors.lightGray.withValues(alpha:(0.3),
                     blurRadius: 4.0,
                     offset: Offset(0.0, 5.0)),
               ]),

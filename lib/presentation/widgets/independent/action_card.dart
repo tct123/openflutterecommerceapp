@@ -27,7 +27,7 @@ class OpenFlutterActionCard extends StatelessWidget {
                 color: AppColors.white,
                 boxShadow: [
                   BoxShadow(
-                      color: AppColors.lightGray.withOpacity(0.3),
+                      color: AppColors.lightGray.withValues(alpha:(0.3),
                       blurRadius: AppSizes.imageRadius,
                       offset: Offset(0.0, AppSizes.imageRadius))
                 ]),

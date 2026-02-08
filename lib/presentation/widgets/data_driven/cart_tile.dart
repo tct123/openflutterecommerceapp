@@ -36,7 +36,7 @@ class _OpenFlutterCartTileState extends State<OpenFlutterCartTile> {
                 borderRadius: BorderRadius.circular(AppSizes.imageRadius),
                 boxShadow: [
                   BoxShadow(
-                      color: AppColors.lightGray.withOpacity(0.3),
+                      color: AppColors.lightGray.withValues(alpha: 0.3),
                       blurRadius: AppSizes.imageRadius,
                       offset: Offset(0.0, AppSizes.imageRadius))
                 ],
@@ -96,102 +96,77 @@ class _OpenFlutterCartTileState extends State<OpenFlutterCartTile> {
                                   bottom: AppSizes.linePadding * 2),
                             ),
                             Row(children: <Widget>[
-                              widget.onChangeQuantity != null
-                                  ? Container(
-                                      width: 120,
-                                      child: Row(
-                                        children: <Widget>[
-                                          InkWell(
-                                              onTap: () => {
-                                                    widget.onChangeQuantity(
-                                                        widget
-                                                                .item
-                                                                .productQuantity
-                                                                .quantity -
-                                                            1)
-                                                  },
-                                              child: Container(
-                                                  alignment: Alignment.center,
-                                                  width: 36,
-                                                  height: 36,
-                                                  decoration: BoxDecoration(
-                                                      color: AppColors.white,
-                                                      borderRadius:
-                                                          BorderRadius.circular(
-                                                              18),
-                                                      boxShadow: [
-                                                        BoxShadow(
-                                                            color: AppColors
-                                                                .lightGray
-                                                                .withOpacity(
-                                                                    0.3),
-                                                            blurRadius: AppSizes
-                                                                .imageRadius,
-                                                            offset: Offset(
-                                                                0.0,
-                                                                AppSizes
-                                                                    .imageRadius))
-                                                      ]),
-                                                  child: Icon(Icons.remove))),
-                                          Container(
+                              Container(
+                                width: 120,
+                                child: Row(
+                                  children: <Widget>[
+                                    InkWell(
+                                        onTap: () => {
+                                              widget.onChangeQuantity(widget
+                                                      .item
+                                                      .productQuantity
+                                                      .quantity -
+                                                  1)
+                                            },
+                                        child: Container(
                                             alignment: Alignment.center,
-                                            padding: EdgeInsets.all(
-                                                AppSizes.linePadding * 2),
-                                            child: Text(
-                                                widget.item.productQuantity
-                                                    .quantity
-                                                    .toString(),
-                                                style: _theme
-                                                    .textTheme.headlineMedium),
-                                          ),
-                                          InkWell(
-                                              onTap: (() => {
-                                                    widget.onChangeQuantity(
-                                                        widget
-                                                                .item
-                                                                .productQuantity
-                                                                .quantity +
-                                                            1)
-                                                  }),
-                                              child: Container(
-                                                  alignment: Alignment.center,
-                                                  width: 36,
-                                                  height: 36,
-                                                  decoration: BoxDecoration(
-                                                      color: AppColors.white,
-                                                      borderRadius:
-                                                          BorderRadius.circular(
-                                                              18),
-                                                      boxShadow: [
-                                                        BoxShadow(
-                                                            color: AppColors
-                                                                .lightGray
-                                                                .withOpacity(
-                                                                    0.3),
-                                                            blurRadius: AppSizes
-                                                                .imageRadius,
-                                                            offset: Offset(
-                                                                0.0,
-                                                                AppSizes
-                                                                    .imageRadius))
-                                                      ]),
-                                                  child: Icon(Icons.add))),
-                                        ],
-                                      ),
-                                    )
-                                  : Container(
-                                      width: 110,
-                                      child: Row(children: <Widget>[
-                                        Text('Units: ',
-                                            style: _theme.textTheme.bodyLarge),
-                                        Text(
-                                            widget.item.productQuantity.quantity
-                                                .toString(),
-                                            style: _theme.textTheme.bodyLarge
-                                                ?.copyWith(
-                                                    color:
-                                                        _theme.primaryColor)),
-                                      ])),
+                                            width: 36,
+                                            height: 36,
+                                            decoration: BoxDecoration(
+                                                color: AppColors.white,
+                                                borderRadius:
+                                                    BorderRadius.circular(18),
+                                                boxShadow: [
+                                                  BoxShadow(
+                                                      color: AppColors.lightGray
+                                                          .withValues(
+                                                              alpha: 0.3),
+                                                      blurRadius:
+                                                          AppSizes.imageRadius,
+                                                      offset: Offset(0.0,
+                                                          AppSizes.imageRadius))
+                                                ]),
+                                            child: Icon(Icons.remove))),
+                                    Container(
+                                      alignment: Alignment.center,
+                                      padding: EdgeInsets.all(
+                                          AppSizes.linePadding * 2),
+                                      child: Text(
+                                          widget.item.productQuantity.quantity
+                                              .toString(),
+                                          style:
+                                              _theme.textTheme.headlineMedium),
+                                    ),
+                                    InkWell(
+                                        onTap: (() => {
+                                              widget.onChangeQuantity(widget
+                                                      .item
+                                                      .productQuantity
+                                                      .quantity +
+                                                  1)
+                                            }),
+                                        child: Container(
+                                            alignment: Alignment.center,
+                                            width: 36,
+                                            height: 36,
+                                            decoration: BoxDecoration(
+                                                color: AppColors.white,
+                                                borderRadius:
+                                                    BorderRadius.circular(18),
+                                                boxShadow: [
+                                                  BoxShadow(
+                                                      color: AppColors.lightGray
+                                                          .withValues(
+                                                              alpha: 0.3),
+                                                      blurRadius:
+                                                          AppSizes.imageRadius,
+                                                      offset: Offset(0.0,
+                                                          AppSizes.imageRadius))
+                                                ]),
+                                            child: Icon(Icons.add))),
+                                  ],
+                                ),
+                              ),
                               Container(
                                 width: width - 280,
                                 alignment: Alignment.centerRight,
