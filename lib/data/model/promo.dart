@@ -20,19 +20,19 @@ class Promo extends Equatable {
       required this.image,
       required this.textColor});
 
-@override
+  @override
   factory Promo.fromEntity(Entity entity) {
-    if ( entity is PromoCodeEntity ) {
+    if (entity is PromoCodeEntity) {
       return Promo(
-        title: entity.title, 
-        promoCode: entity.promoCode,
-        discount: entity.discountPercent,
-        textColor: Colors.white,
-        daysLeft: entity.dateExpires!.difference(DateTime.now()).inDays,
-        image: ""
-      );
+          title: entity.title,
+          promoCode: entity.promoCode,
+          discount: entity.discountPercent,
+          textColor: Colors.white,
+          daysLeft: entity.dateExpires!.difference(DateTime.now()).inDays,
+          image: "");
     } else {
-      throw EntityModelMapperException(message: 'Entity should be of type ProductEntity');
+      throw EntityModelMapperException(
+          message: 'Entity should be of type ProductEntity');
     }
   }
   @override

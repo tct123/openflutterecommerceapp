@@ -10,8 +10,8 @@ import 'package:openflutterecommerce/domain/usecases/products/products_by_filter
 
 import '../../../fixtures/fixture_reader.dart';
 
-class MockWoocommerceWrapper extends Mock implements WoocommercWrapperAbstract {
-}
+class MockWoocommerceWrapper extends Mock
+    implements WoocommercWrapperAbstract {}
 
 void main() {
   late MockWoocommerceWrapper woocommerce;

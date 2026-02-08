@@ -15,7 +15,7 @@ import 'package:openflutterecommerce/presentation/widgets/widgets.dart';
 class SettingsView extends StatefulWidget {
   final Function? changeView;
 
-  const SettingsView({ this.changeView}) ;
+  const SettingsView({this.changeView});
 
   @override
   _SettingsViewState createState() => _SettingsViewState();
@@ -87,8 +87,9 @@ class _SettingsViewState extends State<SettingsView> {
                     controller: _fullNameController,
                     hint: 'Full Name',
                     horizontalPadding: 0,
-                    onValueChanged: (value) =>
-                        settingsBloc..add(UpdateFullNameEvent(fullName: value.toString().trim())),
+                    onValueChanged: (value) => settingsBloc
+                      ..add(UpdateFullNameEvent(
+                          fullName: value.toString().trim())),
                   ),
                   SizedBox(
                     height: 24,
@@ -97,8 +98,9 @@ class _SettingsViewState extends State<SettingsView> {
                     controller: _dateOfBirthController,
                     hint: 'Date of Birth',
                     horizontalPadding: 0,
-                    onValueChanged: (value) =>
-                        settingsBloc.add(UpdateDateOfBirthEvent(dateOfBirth: value.toString().trim())),
+                    onValueChanged: (value) => settingsBloc.add(
+                        UpdateDateOfBirthEvent(
+                            dateOfBirth: value.toString().trim())),
                   ),
                   SizedBox(
                     height: 55,
@@ -108,7 +110,8 @@ class _SettingsViewState extends State<SettingsView> {
                     children: <Widget>[
                       Text(
                         'Password',
-                        style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
+                        style: TextStyle(
+                            fontSize: 16, fontWeight: FontWeight.w500),
                       ),
                       GestureDetector(
                         onTap: () {
@@ -116,7 +119,10 @@ class _SettingsViewState extends State<SettingsView> {
                         },
                         child: Text(
                           'Change',
-                          style: TextStyle(fontSize: 14, color: AppColors.lightGray, fontWeight: FontWeight.w500),
+                          style: TextStyle(
+                              fontSize: 14,
+                              color: AppColors.lightGray,
+                              fontWeight: FontWeight.w500),
                         ),
                       ),
                     ],
@@ -142,7 +148,8 @@ class _SettingsViewState extends State<SettingsView> {
                         //trackColor: AppColors.lightGray,
                         value: state.settings!.notifySales,
                         activeColor: AppColors.success,
-                        onChanged: (newValue) => settingsBloc.add(UpdateNotifySalesEvent(notifySales: newValue)),
+                        onChanged: (newValue) => settingsBloc
+                            .add(UpdateNotifySalesEvent(notifySales: newValue)),
                       ),
                     ],
                   ),
@@ -160,7 +167,9 @@ class _SettingsViewState extends State<SettingsView> {
                         //trackColor: AppColors.lightGray,
                         value: state.settings!.notifyArrivals,
                         activeColor: AppColors.success,
-                        onChanged: (newValue) => settingsBloc..add(UpdateNotifyArrivalsEvent(notifyArrivals: newValue)),
+                        onChanged: (newValue) => settingsBloc
+                          ..add(UpdateNotifyArrivalsEvent(
+                              notifyArrivals: newValue)),
                       ),
                     ],
                   ),
@@ -178,7 +187,9 @@ class _SettingsViewState extends State<SettingsView> {
                         //trackColor: AppColors.lightGray,
                         value: state.settings!.notifyDelivery,
                         activeColor: AppColors.success,
-                        onChanged: (newValue) => settingsBloc..add(UpdateNotifyDeliveryEvent(notifyDelivery: newValue)),
+                        onChanged: (newValue) => settingsBloc
+                          ..add(UpdateNotifyDeliveryEvent(
+                              notifyDelivery: newValue)),
                       ),
                     ],
                   ),
@@ -198,7 +209,8 @@ class _SettingsViewState extends State<SettingsView> {
     showModalBottomSheet(
         context: context,
         shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.only(topLeft: Radius.circular(34), topRight: Radius.circular(34)),
+          borderRadius: BorderRadius.only(
+              topLeft: Radius.circular(34), topRight: Radius.circular(34)),
         ),
         builder: (BuildContext context) => BlocProvider<PasswordBloc>(
               create: (context) => passwordBloc,
@@ -210,7 +222,8 @@ class _SettingsViewState extends State<SettingsView> {
                         // close bottom sheet
                         Navigator.pop(context);
 
-                        _showAlertDialog(context, 'Success', 'Password changed successfully');
+                        _showAlertDialog(context, 'Success',
+                            'Password changed successfully');
 
                         clearPasswordFields();
                       });
@@ -225,7 +238,9 @@ class _SettingsViewState extends State<SettingsView> {
                       padding: AppSizes.bottomSheetPadding,
                       decoration: BoxDecoration(
                           color: AppColors.background,
-                          borderRadius: BorderRadius.only(topLeft: Radius.circular(34), topRight: Radius.circular(34)),
+                          borderRadius: BorderRadius.only(
+                              topLeft: Radius.circular(34),
+                              topRight: Radius.circular(34)),
                           boxShadow: []),
                       child: SingleChildScrollView(
                         child: Column(
@@ -243,7 +258,10 @@ class _SettingsViewState extends State<SettingsView> {
                             ),
                             Text(
                               'Password Change',
-                              style: TextStyle(color: AppColors.black, fontSize: 18, fontWeight: FontWeight.bold),
+                              style: TextStyle(
+                                  color: AppColors.black,
+                                  fontSize: 18,
+                                  fontWeight: FontWeight.bold),
                             ),
                             SizedBox(
                               height: 18,
@@ -301,9 +319,14 @@ class _SettingsViewState extends State<SettingsView> {
                                 height: 48,
                                 onPressed: () => passwordBloc
                                   ..add(ChangePasswordEvent(
-                                      currentPassword: _currentPasswordController.text.trim(),
-                                      newPassword: _newPasswordController.text.trim(),
-                                      repeatNewPassword: _repeatPasswordController.text.trim())))
+                                      currentPassword:
+                                          _currentPasswordController.text
+                                              .trim(),
+                                      newPassword:
+                                          _newPasswordController.text.trim(),
+                                      repeatNewPassword:
+                                          _repeatPasswordController.text
+                                              .trim())))
                           ],
                         ),
                       ),
@@ -312,7 +335,8 @@ class _SettingsViewState extends State<SettingsView> {
             ));
   }
 
-  Future<void> _showAlertDialog(BuildContext context, String title, String content) {
+  Future<void> _showAlertDialog(
+      BuildContext context, String title, String content) {
     return showDialog<void>(
       context: context,
       builder: (BuildContext context) {

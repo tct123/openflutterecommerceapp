@@ -12,50 +12,51 @@ class ProductReviewRepository {
             'https://images.unsplash.com/photo-1518806118471-f28b20a1d79d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80',
         rating: 4,
         comment:
-            'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua', isHelpful: null!, photos: []),
+            'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua',
+        isHelpful: null!,
+        photos: []),
     ProductReview(
-      id: 2,
-      productId: 2,
-      authorName: 'Flutter Reviewer',
-      authorPhotoUrl:
+        id: 2,
+        productId: 2,
+        authorName: 'Flutter Reviewer',
+        authorPhotoUrl:
+            'https://images.unsplash.com/photo-1518806118471-f28b20a1d79d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80',
+        rating: 4,
+        comment:
+            'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua',
+        photos: [
           'https://images.unsplash.com/photo-1518806118471-f28b20a1d79d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80',
-      rating: 4,
-      comment:
-          'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua',
-      photos: [
-        'https://images.unsplash.com/photo-1518806118471-f28b20a1d79d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80',
-        'http://personal.psu.edu/xqz5228/jpg.jpg'
-      ], isHelpful: null!
-    ),
+          'http://personal.psu.edu/xqz5228/jpg.jpg'
+        ],
+        isHelpful: null!),
     ProductReview(
-      id: 3,
-      productId: 5,
-      authorName: 'Juan Agú',
-      authorPhotoUrl: 'http://personal.psu.edu/xqz5228/jpg.jpg',
-      rating: 5,
-      comment:
-          'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua',
-      photos: [
-        'https://images.unsplash.com/photo-1518806118471-f28b20a1d79d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80',
-        'http://personal.psu.edu/xqz5228/jpg.jpg',
-        'https://images.unsplash.com/photo-1518806118471-f28b20a1d79d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80',
-        'http://personal.psu.edu/xqz5228/jpg.jpg',
-        'https://images.unsplash.com/photo-1518806118471-f28b20a1d79d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80',
-        'http://personal.psu.edu/xqz5228/jpg.jpg'
-      ],
-        isHelpful: null!
-    ),
-    ProductReview(
-      id: 4,
-      productId: 6,
-      authorName: 'Flutter Reviewer',
-      authorPhotoUrl:
+        id: 3,
+        productId: 5,
+        authorName: 'Juan Agú',
+        authorPhotoUrl: 'http://personal.psu.edu/xqz5228/jpg.jpg',
+        rating: 5,
+        comment:
+            'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua',
+        photos: [
           'https://images.unsplash.com/photo-1518806118471-f28b20a1d79d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80',
-      rating: 1,
-      comment:
-          'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua',
-        isHelpful: null!, photos: []
-    ),
+          'http://personal.psu.edu/xqz5228/jpg.jpg',
+          'https://images.unsplash.com/photo-1518806118471-f28b20a1d79d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80',
+          'http://personal.psu.edu/xqz5228/jpg.jpg',
+          'https://images.unsplash.com/photo-1518806118471-f28b20a1d79d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80',
+          'http://personal.psu.edu/xqz5228/jpg.jpg'
+        ],
+        isHelpful: null!),
+    ProductReview(
+        id: 4,
+        productId: 6,
+        authorName: 'Flutter Reviewer',
+        authorPhotoUrl:
+            'https://images.unsplash.com/photo-1518806118471-f28b20a1d79d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80',
+        rating: 1,
+        comment:
+            'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua',
+        isHelpful: null!,
+        photos: []),
     ProductReview(
       id: 5,
       productId: 7,
@@ -69,22 +70,21 @@ class ProductReviewRepository {
       photos: ['http://personal.psu.edu/xqz5228/jpg.jpg'],
     ),
     ProductReview(
-      id: 6,
-      productId: 8,
-      authorName: 'Flutter Reviewer2',
-      authorPhotoUrl:
+        id: 6,
+        productId: 8,
+        authorName: 'Flutter Reviewer2',
+        authorPhotoUrl:
+            'https://images.unsplash.com/photo-1518806118471-f28b20a1d79d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80',
+        rating: 3,
+        comment:
+            'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua',
+        photos: [
           'https://images.unsplash.com/photo-1518806118471-f28b20a1d79d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80',
-      rating: 3,
-      comment:
-          'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua',
-      photos: [
-        'https://images.unsplash.com/photo-1518806118471-f28b20a1d79d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80',
-        'http://personal.psu.edu/xqz5228/jpg.jpg',
-        'https://images.unsplash.com/photo-1518806118471-f28b20a1d79d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80',
-        'http://personal.psu.edu/xqz5228/jpg.jpg'
-      ],
-        isHelpful: null!
-    ),
+          'http://personal.psu.edu/xqz5228/jpg.jpg',
+          'https://images.unsplash.com/photo-1518806118471-f28b20a1d79d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80',
+          'http://personal.psu.edu/xqz5228/jpg.jpg'
+        ],
+        isHelpful: null!),
     ProductReview(
       id: 7,
       productId: 8,
@@ -94,7 +94,8 @@ class ProductReviewRepository {
       rating: 4,
       comment:
           'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua',
-      isHelpful: true, photos: [],
+      isHelpful: true,
+      photos: [],
     ),
     ProductReview(
       id: 8,
@@ -105,7 +106,8 @@ class ProductReviewRepository {
       rating: 5,
       comment:
           'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua',
-      isHelpful: false, photos: [],
+      isHelpful: false,
+      photos: [],
     ),
   ];
 

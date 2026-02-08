@@ -10,26 +10,26 @@ import 'package:openflutterecommerce/data/model/product.dart';
 import 'package:openflutterecommerce/data/model/product_attribute.dart';
 import 'package:openflutterecommerce/data/model/promo.dart';
 
-class CartRepositoryImpl extends CartRepository{
-  static CartProductDataStorage cartProductDataStorage 
-    = CartProductDataStorage();
+class CartRepositoryImpl extends CartRepository {
+  static CartProductDataStorage cartProductDataStorage =
+      CartProductDataStorage();
 
   @override
-  Future addProductToCart(Product product, int quantity, Map<ProductAttribute, String> selectedAttributes) async {
-    cartProductDataStorage.items.add(
-      CartItem(
-        product: product,
-        productQuantity: ProductQuantity(quantity), 
-        selectedAttributes: selectedAttributes,
-      )
-    );
+  Future addProductToCart(Product product, int quantity,
+      Map<ProductAttribute, String> selectedAttributes) async {
+    cartProductDataStorage.items.add(CartItem(
+      product: product,
+      productQuantity: ProductQuantity(quantity),
+      selectedAttributes: selectedAttributes,
+    ));
   }
 
   @override
   Future changeQuantity(CartItem item, int newQuantity) async {
-    for(int i = 0; i < cartProductDataStorage.items.length; i++){
-      if ( cartProductDataStorage.items[i] == item ) {
-        cartProductDataStorage.items[i].productQuantity.changeQuantity(newQuantity);
+    for (int i = 0; i < cartProductDataStorage.items.length; i++) {
+      if (cartProductDataStorage.items[i] == item) {
+        cartProductDataStorage.items[i].productQuantity
+            .changeQuantity(newQuantity);
       }
     }
   }
@@ -50,7 +50,7 @@ class CartRepositoryImpl extends CartRepository{
   }
 
   @override
-  double getTotalPrice(){
+  double getTotalPrice() {
     double totalPrice = 0;
     for (var i = 0; i < cartProductDataStorage.items.length; i++) {
       totalPrice += cartProductDataStorage.items[i].price;
@@ -59,15 +59,13 @@ class CartRepositoryImpl extends CartRepository{
   }
 
   @override
-  double getCalculatedPrice(){
+  double getCalculatedPrice() {
     final totalPrice = getTotalPrice();
-    final calculatedTotalPrice = 
-      cartProductDataStorage.appliedPromo != null ?
-        totalPrice * (1 - cartProductDataStorage.appliedPromo.discount/100)
+    final calculatedTotalPrice = cartProductDataStorage.appliedPromo != null
+        ? totalPrice * (1 - cartProductDataStorage.appliedPromo.discount / 100)
         : totalPrice;
     return calculatedTotalPrice;
   }
-
 }
 
 class CartProductDataStorage {

@@ -28,7 +28,8 @@ class UserRepositoryImpl extends UserRepository {
     required String email,
     required String password,
   }) async {
-    return remoteUserRepository.signUp(name: name, email: email, password: password);
+    return remoteUserRepository.signUp(
+        name: name, email: email, password: password);
   }
 
   @override
@@ -44,6 +45,6 @@ class UserRepositoryImpl extends UserRepository {
   Future<void> forgotPassword({
     required String email,
   }) async {
-      return remoteUserRepository.forgotPassword(email: email);
+    return remoteUserRepository.forgotPassword(email: email);
   }
 }

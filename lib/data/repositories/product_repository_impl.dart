@@ -62,7 +62,8 @@ class ProductRepositoryImpl extends ProductRepository with FavoritesRepository {
         productRepository = LocalProductRepository();
       }
 
-      List<Product> products = await productRepository.getProducts(filterRules: null!);
+      List<Product> products =
+          await productRepository.getProducts(filterRules: null!);
 
       //check favorites
       dataStorage.products = [];
@@ -103,8 +104,8 @@ class ProductRepositoryImpl extends ProductRepository with FavoritesRepository {
   }
 
   @override
-  Future<List<FavoriteProduct>> removeFromFavorites(int productId,
-      Map<ProductAttribute, String> selectedAttributes) async {
+  Future<List<FavoriteProduct>> removeFromFavorites(
+      int productId, Map<ProductAttribute, String> selectedAttributes) async {
     //TODO: remove from database in the future
     dataStorage.favProducts.removeWhere((product) =>
         product.product.id == productId &&

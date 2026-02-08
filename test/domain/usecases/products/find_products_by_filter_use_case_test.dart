@@ -12,17 +12,15 @@ import '../use_case_test_include.dart';
 void main() {
   late FindProductsByFilterUseCase findProductsByFilterUseCase;
   late ProductsByFilterParams productsByFilterParams;
-  
+
   setupLocator();
-  
+
   MockWoocommerceWrapper woocommerce = sl();
-  
+
   setUp(() {
     findProductsByFilterUseCase = FindProductsByFilterUseCaseImpl();
-    
-    productsByFilterParams = ProductsByFilterParams(
-      categoryId: 1
-    );
+
+    productsByFilterParams = ProductsByFilterParams(categoryId: 1);
   });
   group('Get list of products ', () {
     test(
@@ -30,15 +28,16 @@ void main() {
       () async {
         // arrange
         when(woocommerce.getProductList(ProductsByFilterParams(categoryId: 0)))
-          .thenAnswer((_) async => json.decode(fixture('woocommerce/products.json'))
-        );
+            .thenAnswer(
+                (_) async => json.decode(fixture('woocommerce/products.json')));
         // act
-        final productsData = await findProductsByFilterUseCase.execute(productsByFilterParams);
+        final productsData =
+            await findProductsByFilterUseCase.execute(productsByFilterParams);
         // assert
         expect(productsData.products.length, equals(10));
       },
     );
-    
+
     test(
       'should return server failure when findProductsByFilterUseCase.execute is unsuccessful',
       () async {
@@ -46,14 +45,12 @@ void main() {
         when(woocommerce.getProductList(ProductsByFilterParams(categoryId: 0)))
             .thenThrow(HttpRequestException());
         // act
-        final productsData = await findProductsByFilterUseCase.execute(productsByFilterParams);
+        final productsData =
+            await findProductsByFilterUseCase.execute(productsByFilterParams);
         // assert
         expect(productsData.validResults, equals(false));
         expect(productsData.exception, isInstanceOf<EmptyProductsException>());
       },
     );
-
   });
-  
 }
-    

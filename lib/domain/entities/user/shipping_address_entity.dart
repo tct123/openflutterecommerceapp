@@ -9,12 +9,14 @@ class ShippingAddressEntity extends Entity<int> {
   final bool? isDefault;
 
   ShippingAddressEntity(
-    {required int id,
-    required this.title,
-    required this.address,
-    required this.city,
-    required this.country,
-    required this.postal, this.isDefault}) : super(id);
+      {required int id,
+      required this.title,
+      required this.address,
+      required this.city,
+      required this.country,
+      required this.postal,
+      this.isDefault})
+      : super(id);
 
   @override
   Map<String, dynamic> toMap() {
@@ -30,13 +32,6 @@ class ShippingAddressEntity extends Entity<int> {
   }
 
   @override
-  List<Object> get props => [
-    id, 
-    title, 
-    address, 
-    city, 
-    country, 
-    postal, 
-    isDefault!
-  ];
+  List<Object> get props =>
+      [id, title, address, city, country, postal, isDefault!];
 }

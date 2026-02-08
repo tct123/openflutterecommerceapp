@@ -24,8 +24,7 @@ class _CartScreenState extends State<CartScreen> {
         title: '',
         body: BlocProvider<CartBloc>(
             create: (context) {
-              return CartBloc()
-                ..add(CartLoadedEvent());
+              return CartBloc()..add(CartLoadedEvent());
             },
             child: CartWrapper()),
         bottomMenuIndex: 2,

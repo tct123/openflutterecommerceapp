@@ -30,7 +30,8 @@ class ProductDetailsParameters {
 class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
   @override
   Widget build(BuildContext context) {
-    final args = ModalRoute.of(context)!.settings.arguments as ProductDetailsParameters;
+    final args =
+        ModalRoute.of(context)!.settings.arguments as ProductDetailsParameters;
     print('productId: ${args.productId}');
     return SafeArea(
         child: OpenFlutterScaffold(
@@ -40,8 +41,7 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
         create: (context) {
           return ProductBloc(productId: args.productId)
             ..add(ProductScreenLoadedEvent(
-                productId: args.productId,
-                categoryId: args.categoryId));
+                productId: args.productId, categoryId: args.categoryId));
         },
         child: ProductWrapper(),
       ),

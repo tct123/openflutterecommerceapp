@@ -63,8 +63,8 @@ class _FiltersScreenState extends State<FiltersScreen> {
                                   isSelected:
                                       rules.selectedAttributes[attribute] !=
                                               null
-                                          ? rules.selectedAttributes[attribute]
-                                              !.contains(option)
+                                          ? rules.selectedAttributes[attribute]!
+                                              .contains(option)
                                           : false,
                                 )))),
                       )))

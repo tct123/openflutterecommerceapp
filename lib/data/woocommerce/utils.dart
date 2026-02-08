@@ -4,12 +4,10 @@
  * @see utils.dart
  */
 
-
 import 'package:openflutterecommerce/config/server_addresses.dart';
 import 'package:openflutterecommerce/config/storage.dart';
 
 class HttpClient {
-
   Map createHeader() {
     var header = <String, String>{
       'authorization': 'Bearer ' + Storage().token,

@@ -1,4 +1,3 @@
-
 import 'package:openflutterecommerce/data/repositories/abstract/category_repository.dart';
 import 'package:openflutterecommerce/data/model/category.dart';
 import 'package:openflutterecommerce/data/error/exceptions.dart';
@@ -9,20 +8,20 @@ import 'package:openflutterecommerce/locator.dart';
 
 //Uses remote or local data depending on NetworkStatus
 class CategoryRepositoryImpl extends CategoryRepository {
-
   @override
-  Future<List<ProductCategory>> getCategories({int parentCategoryId = 0}) async {
-    try
-    {
+  Future<List<ProductCategory>> getCategories(
+      {int parentCategoryId = 0}) async {
+    try {
       NetworkStatus networkStatus = sl();
       CategoryRepository categoryRepository;
-      if ( networkStatus.isConnected != null ) {
+      if (networkStatus.isConnected != null) {
         categoryRepository = RemoteCategoryRepository(woocommerce: sl());
       } else {
         categoryRepository = LocalCategoryRepository();
       }
 
-      return await categoryRepository.getCategories(parentCategoryId: parentCategoryId);
+      return await categoryRepository.getCategories(
+          parentCategoryId: parentCategoryId);
     } on HttpRequestException {
       throw RemoteServerException();
     }

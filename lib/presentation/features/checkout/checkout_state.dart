@@ -41,24 +41,26 @@ class CheckoutProceedState extends CheckoutState {
       this.cartProducts,
       this.currentShippingAddress,
       this.currentPaymentMethod,
-      required this.orderPrice, 
-      required this.deliveryPrice, 
-      required this.summaryPrice, 
+      required this.orderPrice,
+      required this.deliveryPrice,
+      required this.summaryPrice,
       this.showAddNewCardForm = false});
 
-  CheckoutProceedState copyWith(
-      {List<Product>? cartProducts, int? cardId, bool? showAddNewCardForm,
-      double? orderPrice,
-      double? deliveryPrice,
-      double? summaryPrice, }) {
+  CheckoutProceedState copyWith({
+    List<Product>? cartProducts,
+    int? cardId,
+    bool? showAddNewCardForm,
+    double? orderPrice,
+    double? deliveryPrice,
+    double? summaryPrice,
+  }) {
     return CheckoutProceedState(
-        cartProducts: /*cartProducts ?? */this.cartProducts,
+        cartProducts: /*cartProducts ?? */ this.cartProducts,
         showAddNewCardForm: showAddNewCardForm ?? this.showAddNewCardForm,
         cardId: cardId ?? this.cardId,
         orderPrice: orderPrice ?? this.orderPrice,
         deliveryPrice: deliveryPrice ?? this.deliveryPrice,
-        summaryPrice: summaryPrice ?? this.summaryPrice
-    );
+        summaryPrice: summaryPrice ?? this.summaryPrice);
   }
 
   @override

@@ -3,9 +3,7 @@ import 'package:openflutterecommerce/domain/entities/entity.dart';
 class ProductParameterEntity extends Entity<int> {
   final String title;
 
-  ProductParameterEntity(
-    {required int id,
-    required this.title}) : super(id);
+  ProductParameterEntity({required int id, required this.title}) : super(id);
 
   @override
   Map<String, dynamic> toMap() {
@@ -16,8 +14,5 @@ class ProductParameterEntity extends Entity<int> {
   }
 
   @override
-  List<Object> get props => [
-    id, 
-    title
-  ];
+  List<Object> get props => [id, title];
 }

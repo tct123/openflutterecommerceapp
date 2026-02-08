@@ -3,9 +3,8 @@ import 'package:path/path.dart';
 import 'package:sqflite/sqflite.dart';
 
 class SQLiteDbProvider {
-
   static late Database db;
-  
+
   static Future<void> open() async {
     db = await openDatabase(
       join(await getDatabasesPath(), OpenFlutterDatabaseConfig.databaseName),
@@ -22,8 +21,9 @@ class SQLiteDbProvider {
       await db.execute(createTableQuery);
     });
   }
-  
+
   static Future<void> clear() async {
-    await deleteDatabase(join(await getDatabasesPath(), OpenFlutterDatabaseConfig.databaseName));
+    await deleteDatabase(
+        join(await getDatabasesPath(), OpenFlutterDatabaseConfig.databaseName));
   }
 }

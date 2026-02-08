@@ -19,12 +19,13 @@ class CartItem extends Equatable {
     required this.selectedAttributes,
   });
 
-  void changeQuantity(int quantity){
+  void changeQuantity(int quantity) {
     productQuantity.changeQuantity(quantity);
   }
 
   @override
-  List<Object> get props => [product, selectedAttributes, productQuantity.quantity];
+  List<Object> get props =>
+      [product, selectedAttributes, productQuantity.quantity];
 }
 
 class ProductQuantity {
@@ -32,7 +33,7 @@ class ProductQuantity {
 
   ProductQuantity(this.quantity);
 
-  void changeQuantity(int newQuantity){
+  void changeQuantity(int newQuantity) {
     quantity = newQuantity;
   }
 }

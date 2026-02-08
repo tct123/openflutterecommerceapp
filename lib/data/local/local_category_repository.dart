@@ -1,9 +1,10 @@
 import 'package:openflutterecommerce/data/repositories/abstract/category_repository.dart';
 import 'package:openflutterecommerce/data/model/category.dart';
 
-class LocalCategoryRepository extends CategoryRepository{
+class LocalCategoryRepository extends CategoryRepository {
   @override
-  Future<List<ProductCategory>> getCategories({int parentCategoryId = 0}) async {
+  Future<List<ProductCategory>> getCategories(
+      {int parentCategoryId = 0}) async {
     // TODO: implement getCategories
     return Future.value(null);
   }
@@ -13,5 +14,4 @@ class LocalCategoryRepository extends CategoryRepository{
     // TODO: implement getCategoryDetails
     return Future.value(null);
   }
-
 }

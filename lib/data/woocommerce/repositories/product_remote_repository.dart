@@ -10,7 +10,6 @@ import 'package:openflutterecommerce/data/woocommerce/repositories/woocommerce_w
 import 'package:openflutterecommerce/domain/usecases/products/products_by_filter_params.dart';
 
 class RemoteProductRepository extends ProductRepository {
-  
   final WoocommercWrapperAbstract woocommerce;
 
   RemoteProductRepository({required this.woocommerce});
@@ -40,22 +39,20 @@ class RemoteProductRepository extends ProductRepository {
       int pageSize = AppConsts.page_size,
       int categoryId = 0,
       bool isFavorite = false,
-      SortRules sortRules = const SortRules(), FilterRules? filterRules}) async {
+      SortRules sortRules = const SortRules(),
+      FilterRules? filterRules}) async {
     // TODO: implement getProducts
-    try
-    {
-      List<dynamic> productsData = await woocommerce.getProductList(
-        ProductsByFilterParams(
-          categoryId: categoryId,
-          sortBy: sortRules, 
-          filterRules: filterRules, 
-        )
-      );
+    try {
+      List<dynamic> productsData =
+          await woocommerce.getProductList(ProductsByFilterParams(
+        categoryId: categoryId,
+        sortBy: sortRules,
+        filterRules: filterRules,
+      ));
       List<Product> products = [];
-      for(int i = 0; i < productsData.length; i++){
-        products.add(
-          Product.fromEntity(ProductModel.fromJson(productsData[i]))
-        );
+      for (int i = 0; i < productsData.length; i++) {
+        products
+            .add(Product.fromEntity(ProductModel.fromJson(productsData[i])));
       }
       return products;
     } on HttpRequestException {

@@ -12,16 +12,15 @@ import 'package:openflutterecommerce/data/network/network_status.dart';
 import 'package:openflutterecommerce/data/woocommerce/repositories/promo_remote_repository.dart';
 import 'package:openflutterecommerce/locator.dart';
 
-class PromoRepositoryImpl extends PromoRepository{
+class PromoRepositoryImpl extends PromoRepository {
   static PromoDataStorage promoDataStorage = PromoDataStorage();
 
   @override
   Future<List<Promo>> getPromoList() async {
-    try
-    {
+    try {
       NetworkStatus networkStatus = sl();
       PromoRepository promoRepository;
-      if ( networkStatus.isConnected != null ) {
+      if (networkStatus.isConnected != null) {
         promoRepository = RemotePromoRepository(woocommerce: sl());
       } else {
         promoRepository = LocalPromoRepository();

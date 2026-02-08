@@ -20,9 +20,5 @@ class ProductReviewPhotoEntity extends Entity<int> {
   }
 
   @override
-  List<Object> get props => [
-    id, 
-    image, 
-    reviewId
-  ];
+  List<Object> get props => [id, image, reviewId];
 }

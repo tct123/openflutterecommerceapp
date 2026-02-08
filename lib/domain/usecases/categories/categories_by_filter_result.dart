@@ -1,5 +1,3 @@
-
-
 import 'package:openflutterecommerce/data/model/category.dart';
 
 class CategoriesByFilterResult {
@@ -7,12 +5,8 @@ class CategoriesByFilterResult {
   final int quantity;
   final Exception exception;
 
-  CategoriesByFilterResult(
-    this.categories,
-    this.quantity,{
-      required this.exception
-    }
-  );
-  
+  CategoriesByFilterResult(this.categories, this.quantity,
+      {required this.exception});
+
   bool get validResults => exception == null;
 }

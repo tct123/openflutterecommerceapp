@@ -14,21 +14,28 @@ class ServerAddresses {
   static const authToken = 'wp-json/jwt-auth/v1/token';
 
   //CACHED API (for test purposes only)
-  static const _productCategoriesCached = '/cachedapi/v3/products/categories.json';
+  static const _productCategoriesCached =
+      '/cachedapi/v3/products/categories.json';
   static const _productsCached = '/cachedapi/v3/products/products.json';
   static const _promosCached = '/cachedapi/v3/coupon.json';
 
   static bool useStatic = _woocommerceKeys.isEmpty;
 
-  static String get productCategories => serverAddress  +
-    (useStatic ? _productCategoriesCached 
-      : serverAddress  +_categorySuffix + _woocommerceKeys);
+  static String get productCategories =>
+      serverAddress +
+      (useStatic
+          ? _productCategoriesCached
+          : serverAddress + _categorySuffix + _woocommerceKeys);
 
-  static String get products => serverAddress  +
-    (useStatic ? _productsCached 
-      : serverAddress  +_productSuffix + _woocommerceKeys);
+  static String get products =>
+      serverAddress +
+      (useStatic
+          ? _productsCached
+          : serverAddress + _productSuffix + _woocommerceKeys);
 
-  static String get promos => serverAddress  +
-    (useStatic ? _promosCached 
-      : serverAddress  +_promoSuffix + _woocommerceKeys);
+  static String get promos =>
+      serverAddress +
+      (useStatic
+          ? _promosCached
+          : serverAddress + _promoSuffix + _woocommerceKeys);
 }

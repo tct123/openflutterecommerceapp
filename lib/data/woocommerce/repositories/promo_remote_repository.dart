@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:openflutterecommerce/data/model/promo.dart';
 import 'package:openflutterecommerce/data/repositories/abstract/promo_repository.dart';
@@ -14,10 +13,8 @@ class RemotePromoRepository extends PromoRepository {
   Future<List<Promo>> getPromoList() async {
     var promosData = await woocommerce.getPromoList();
     List<Promo> promos = [];
-    for(int i = 0; i < promosData.length; i++){
-      promos.add(
-        Promo.fromEntity(PromoCodeModel.fromJson(promosData[i]))
-      );
+    for (int i = 0; i < promosData.length; i++) {
+      promos.add(Promo.fromEntity(PromoCodeModel.fromJson(promosData[i])));
     }
     return promos;
   }

@@ -5,23 +5,14 @@ class DeliveryMethodEntity extends Entity<int> {
   final double price;
 
   DeliveryMethodEntity(
-    {required int id,
-    required this.title,
-    required this.price}) : super(id);
+      {required int id, required this.title, required this.price})
+      : super(id);
 
   @override
   Map<String, dynamic> toMap() {
-    return {
-      'id': id, 
-      'title': title, 
-      'price': price
-    };
+    return {'id': id, 'title': title, 'price': price};
   }
 
   @override
-  List<Object> get props => [
-    id, 
-    title, 
-    price
-  ];
+  List<Object> get props => [id, title, price];
 }

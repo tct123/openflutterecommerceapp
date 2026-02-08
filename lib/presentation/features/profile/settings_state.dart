@@ -14,32 +14,38 @@ abstract class SettingsState extends Equatable {
 
 @immutable
 class SettingsInitialState extends SettingsState {
-  SettingsInitialState({UserSettingsEntity? settings}) : super(settings: settings);
+  SettingsInitialState({UserSettingsEntity? settings})
+      : super(settings: settings);
 }
 
 @immutable
 class FullNameUpdatedState extends SettingsState {
-  FullNameUpdatedState({UserSettingsEntity? settings}) : super(settings: settings);
+  FullNameUpdatedState({UserSettingsEntity? settings})
+      : super(settings: settings);
 }
 
 @immutable
 class DateOfBirthUpdatedState extends SettingsState {
-  DateOfBirthUpdatedState({UserSettingsEntity? settings}) : super(settings: settings);
+  DateOfBirthUpdatedState({UserSettingsEntity? settings})
+      : super(settings: settings);
 }
 
 @immutable
 class NotifySalesUpdatedState extends SettingsState {
-  NotifySalesUpdatedState({UserSettingsEntity? settings}) : super(settings: settings);
+  NotifySalesUpdatedState({UserSettingsEntity? settings})
+      : super(settings: settings);
 }
 
 @immutable
 class NotifyArrivalsUpdatedSate extends SettingsState {
-  NotifyArrivalsUpdatedSate({UserSettingsEntity? settings}) : super(settings: settings);
+  NotifyArrivalsUpdatedSate({UserSettingsEntity? settings})
+      : super(settings: settings);
 }
 
 @immutable
 class NotifyDeliveryUpdatedState extends SettingsState {
-  NotifyDeliveryUpdatedState({UserSettingsEntity? settings}) : super(settings: settings);
+  NotifyDeliveryUpdatedState({UserSettingsEntity? settings})
+      : super(settings: settings);
 }
 
 @immutable

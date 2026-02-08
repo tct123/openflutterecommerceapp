@@ -23,7 +23,7 @@ class UserOrder extends Equatable {
   final DateTime orderDate;
 
   double get totalPrice => 0.0;
-      /*products.fold(
+  /*products.fold(
           0,
           (previousValue, element) => previousValue +=
               element.productQuantity.quantity * element.price) -

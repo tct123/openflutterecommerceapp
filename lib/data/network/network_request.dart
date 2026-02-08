@@ -103,7 +103,11 @@ class NetworkRequest {
     return NetworkRequest(
       RequestType.get,
       serverAddress,
-      client: client, body: {}, plainBody: '', listBody: [], headers: {},
+      client: client,
+      body: {},
+      plainBody: '',
+      listBody: [],
+      headers: {},
     );
   }
 }

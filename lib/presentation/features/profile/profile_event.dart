@@ -5,9 +5,9 @@ abstract class ProfileEvent extends Equatable {
   List<Object> get props => [];
 }
 
-class ProfileStartEvent extends ProfileEvent { }
+class ProfileStartEvent extends ProfileEvent {}
 
-class ProfileMyOrdersEvent extends ProfileEvent { }
+class ProfileMyOrdersEvent extends ProfileEvent {}
 
 class ProfileMyOrderDetailsEvent extends ProfileEvent {
   final int orderId;

@@ -6,15 +6,13 @@ import 'package:openflutterecommerce/domain/entities/promo/promo_code_entity.dar
 
 import '../../../fixtures/fixture_reader.dart';
 
-
 void main() {
   final promoCodeModel = PromoCodeModel(
-    id:101,
-    title: 'Ten Percent Discount',
-    discountPercent: 10.0,
-    promoCode: 'ten_percent',
-    dateExpires: DateTime.parse('2022-05-24T00:00:00')
-  );
+      id: 101,
+      title: 'Ten Percent Discount',
+      discountPercent: 10.0,
+      promoCode: 'ten_percent',
+      dateExpires: DateTime.parse('2022-05-24T00:00:00'));
 
   group('extend Entity', () {
     test(
@@ -31,8 +29,7 @@ void main() {
       'should return a valid model',
       () async {
         // arrange
-        final jsonMap =
-            json.decode(fixture('woocommerce/promo.json'));
+        final jsonMap = json.decode(fixture('woocommerce/promo.json'));
         // act
         final result = PromoCodeModel.fromJson(jsonMap[0]);
         // assert
@@ -49,12 +46,12 @@ void main() {
         final result = promoCodeModel.toJson();
         // assert
         final expectedMap = {
-          'id':101,
-          'code':'ten_percent',
-          'amount':10.0,
-          'discount_type':'percent',
-          'description':'Ten Percent Discount',
-          'date_expires':'2022-05-24T00:00:00'
+          'id': 101,
+          'code': 'ten_percent',
+          'amount': 10.0,
+          'discount_type': 'percent',
+          'description': 'Ten Percent Discount',
+          'date_expires': '2022-05-24T00:00:00'
         };
         expect(result, expectedMap);
       },

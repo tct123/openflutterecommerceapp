@@ -4,10 +4,9 @@ class OpenFlutterExpansionTile extends StatelessWidget {
   final String title, description;
 
   OpenFlutterExpansionTile({
-    
     required this.title,
     required this.description,
-  }) ;
+  });
 
   @override
   Widget build(BuildContext context) {

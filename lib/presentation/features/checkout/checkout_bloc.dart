@@ -10,24 +10,26 @@ import 'checkout.dart';
 
 class CheckoutBloc extends Bloc<CheckoutEvent, CheckoutState> {
   final CheckoutStartUseCase checkoutStartUseCase;
-  
-  CheckoutBloc() : checkoutStartUseCase = sl(),super(CheckoutInitialState());
+
+  CheckoutBloc()
+      : checkoutStartUseCase = sl(),
+        super(CheckoutInitialState());
   @override
   Stream<CheckoutState> mapEventToState(CheckoutEvent event) async* {
     if (event is CheckoutStartEvent) {
       if (state is CheckoutInitialState) {
-        ChekcoutStartResult results = await checkoutStartUseCase.execute(ChekcoutStartParams());
+        ChekcoutStartResult results =
+            await checkoutStartUseCase.execute(ChekcoutStartParams());
         yield CheckoutProceedState(
-          cardId: 1, 
-          cartProducts: results.cartItems,
-          shippingAddresses: results.shippingAddress,
-          paymentMethods: results.paymentMethods,
-          currentPaymentMethod: results.currentPaymentMethod,
-          currentShippingAddress: results.currentShippingAddress,
-          orderPrice: results.totalCalculatedPrice,
-          deliveryPrice: results.deliveryPrice,
-          summaryPrice: results.summaryPrice
-        );
+            cardId: 1,
+            cartProducts: results.cartItems,
+            shippingAddresses: results.shippingAddress,
+            paymentMethods: results.paymentMethods,
+            currentPaymentMethod: results.currentPaymentMethod,
+            currentShippingAddress: results.currentShippingAddress,
+            orderPrice: results.totalCalculatedPrice,
+            deliveryPrice: results.deliveryPrice,
+            summaryPrice: results.summaryPrice);
       } else if (state is CheckoutProceedState) {
         yield state;
       }

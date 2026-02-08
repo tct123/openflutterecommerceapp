@@ -8,7 +8,7 @@ void main() {
   //command: flutter run -t test/data/local/all_tests.dart
   //await local_database_test.main(args);
 
-  //run all other tests using 
+  //run all other tests using
   //command: flutter test test/tests.dart
   use_case_test.main();
   woocommerce_test.main();

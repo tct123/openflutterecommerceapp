@@ -31,20 +31,18 @@ class ProductCategory extends Equatable {
 
   @override
   factory ProductCategory.fromEntity(Entity entity) {
-    if ( entity is ProductCategoryEntity ) {
-      return ProductCategory(
-        entity.id, 
-        parentId: entity.parentId,
-        name: entity.title!,
-        description: entity.description,
-        image: CommerceImage(
-          0,//TODO: remove id from CommerceImage
-          entity.image!,
-          ''
-        )
-      );
+    if (entity is ProductCategoryEntity) {
+      return ProductCategory(entity.id,
+          parentId: entity.parentId,
+          name: entity.title!,
+          description: entity.description,
+          image: CommerceImage(
+              0, //TODO: remove id from CommerceImage
+              entity.image!,
+              ''));
     } else {
-      throw EntityModelMapperException(message: 'Entity should be of type ProductCategoryEntity');
+      throw EntityModelMapperException(
+          message: 'Entity should be of type ProductCategoryEntity');
     }
   }
 }

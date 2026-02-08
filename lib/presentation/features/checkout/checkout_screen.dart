@@ -23,11 +23,10 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
       background: null,
       title: 'Checkout',
       body: BlocProvider<CheckoutBloc>(
-        create: (context) {
-          return CheckoutBloc()
-            ..add(CheckoutStartEvent());
-        },
-        child: CheckoutWrapper()),
+          create: (context) {
+            return CheckoutBloc()..add(CheckoutStartEvent());
+          },
+          child: CheckoutWrapper()),
       bottomMenuIndex: 2,
     ));
   }

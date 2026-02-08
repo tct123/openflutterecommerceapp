@@ -15,13 +15,13 @@ abstract class CheckoutEvent extends Equatable {
 }
 
 @immutable
-class CheckoutStartEvent extends CheckoutEvent { }
+class CheckoutStartEvent extends CheckoutEvent {}
 
 @immutable
-class CheckoutFinishEvent extends CheckoutEvent { }
+class CheckoutFinishEvent extends CheckoutEvent {}
 
 @immutable
-class CheckoutShowAddNewCardEvent extends CheckoutEvent { }
+class CheckoutShowAddNewCardEvent extends CheckoutEvent {}
 
 @immutable
 class CheckoutSetDefaultCardEvent extends CheckoutEvent {
@@ -33,7 +33,6 @@ class CheckoutSetDefaultCardEvent extends CheckoutEvent {
   List<Object> get props => [cardId];
 }
 
-
 @immutable
 class CheckoutAddNewCardEvent extends CheckoutEvent {
   final String nameOnCard;
@@ -43,12 +42,23 @@ class CheckoutAddNewCardEvent extends CheckoutEvent {
   final int cvv;
   final bool? setAsDefault;
 
-  CheckoutAddNewCardEvent({required this.nameOnCard, required this.cardNumber,
-    required this.expirationMonth, required this.expirationYear,
-    required this.cvv, this.setAsDefault});
+  CheckoutAddNewCardEvent(
+      {required this.nameOnCard,
+      required this.cardNumber,
+      required this.expirationMonth,
+      required this.expirationYear,
+      required this.cvv,
+      this.setAsDefault});
 
   @override
-  List<Object> get props => [nameOnCard, cardNumber, expirationMonth, expirationYear, cvv, setAsDefault!];
+  List<Object> get props => [
+        nameOnCard,
+        cardNumber,
+        expirationMonth,
+        expirationYear,
+        cvv,
+        setAsDefault!
+      ];
 }
 
 @immutable
@@ -57,7 +67,6 @@ class CheckoutSetDefaultShippingAddressEvent extends CheckoutEvent {
 
   CheckoutSetDefaultShippingAddressEvent(this.shippingAddressId);
 }
-
 
 @immutable
 class CheckoutAddNewShippingAddressEvent extends CheckoutEvent {
@@ -68,7 +77,11 @@ class CheckoutAddNewShippingAddressEvent extends CheckoutEvent {
   final String postal;
   final String country;
 
-  CheckoutAddNewShippingAddressEvent({
-    required this.fullName, required this.address, required this.city,
-    required this.state, required this.postal, required this.country});
+  CheckoutAddNewShippingAddressEvent(
+      {required this.fullName,
+      required this.address,
+      required this.city,
+      required this.state,
+      required this.postal,
+      required this.country});
 }

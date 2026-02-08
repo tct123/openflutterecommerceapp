@@ -1,8 +1,9 @@
 import 'package:openflutterecommerce/data/repositories/abstract/favorites_repository.dart';
+
 /// # 7. Product Favorites Screen
-/// 7.4. Remove product from favorites use-case: 
-/// User clicks delete icon in the top right corner of the favorite 
-/// product tile. The product is removed from local database 
+/// 7.4. Remove product from favorites use-case:
+/// User clicks delete icon in the top right corner of the favorite
+/// product tile. The product is removed from local database
 /// and the list.
 /// https://medium.com/@openflutterproject/open-flutter-project-e-commerce-app-use-cases-and-features-6b7414a6e708
 
@@ -11,25 +12,23 @@ import 'package:openflutterecommerce/domain/usecases/base_use_case.dart';
 import 'package:openflutterecommerce/locator.dart';
 
 abstract class RemoveFromFavoritesUseCase
-  implements BaseUseCase<RemoveFromFavoritesResult, RemoveFromFavoritesParams> {}
+    implements
+        BaseUseCase<RemoveFromFavoritesResult, RemoveFromFavoritesParams> {}
 
 class RemoveFromFavoritesUseCaseImpl implements RemoveFromFavoritesUseCase {
   @override
-  Future<RemoveFromFavoritesResult> execute(RemoveFromFavoritesParams params) async {
+  Future<RemoveFromFavoritesResult> execute(
+      RemoveFromFavoritesParams params) async {
     try {
       FavoritesRepository favoritesRepository = sl();
       await favoritesRepository.removeFromFavorites(
-        params.product.product.id, 
-        params.product.favoriteForm);
+          params.product.product.id, params.product.favoriteForm);
       return RemoveFromFavoritesResult(result: true, exception: null!);
     } catch (e) {
-      return RemoveFromFavoritesResult(  
-        result: false,
-        exception: RemoveFromFavoritesException()
-      );
+      return RemoveFromFavoritesResult(
+          result: false, exception: RemoveFromFavoritesException());
     }
   }
-
 }
 
 class RemoveFromFavoritesParams {
@@ -39,8 +38,9 @@ class RemoveFromFavoritesParams {
 }
 
 class RemoveFromFavoritesResult extends UseCaseResult {
-  RemoveFromFavoritesResult({required Exception exception, required bool result}) 
-    : super(exception: exception, result: result);
+  RemoveFromFavoritesResult(
+      {required Exception exception, required bool result})
+      : super(exception: exception, result: result);
 }
 
 class RemoveFromFavoritesException implements Exception {}

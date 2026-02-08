@@ -8,7 +8,8 @@ class ForgetPasswordBloc
     extends Bloc<ForgetPasswordEvent, ForgetPasswordState> {
   final UserRepository userRepository;
 
-  ForgetPasswordBloc({required this.userRepository}):super(ForgetPasswordInitialState());
+  ForgetPasswordBloc({required this.userRepository})
+      : super(ForgetPasswordInitialState());
 
   @override
   Stream<ForgetPasswordState> mapEventToState(

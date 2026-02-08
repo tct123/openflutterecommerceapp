@@ -74,7 +74,8 @@ class ProductMakeFavoriteEvent extends ProductsListEvent {
   final Product product;
   final HashMap<ProductAttribute, String>? favoriteAttributes;
 
-  ProductMakeFavoriteEvent(this.isFavorite, this.product, {this.favoriteAttributes});
+  ProductMakeFavoriteEvent(this.isFavorite, this.product,
+      {this.favoriteAttributes});
 
   @override
   List<Object> get props => [isFavorite, product, favoriteAttributes!];

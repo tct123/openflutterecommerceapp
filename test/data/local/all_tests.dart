@@ -38,7 +38,7 @@ import 'user/user_data_source_test.dart' as user_data_source_test;
 Future<void> main(List<String> args) async {
   WidgetsFlutterBinding.ensureInitialized();
   //Use after database update
-   await SQLiteDbProvider.clear();
+  await SQLiteDbProvider.clear();
   // run tests on all data sources (tables)
   delivery_method_data_source_test.main();
   category_hashtag_data_source_test.main();
@@ -58,5 +58,5 @@ Future<void> main(List<String> args) async {
   product2parameter_data_source_test.main();
   promo_code_data_source_test.main();
   shipping_address_data_source_test.main();
-  user_data_source_test.main();/**/
+  user_data_source_test.main(); /**/
 }

@@ -12,7 +12,7 @@ class SignInBloc extends Bloc<SignInEvent, SignInState> {
   SignInBloc({
     required this.userRepository,
     required this.authenticationBloc,
-  })  : super(SignInInitialState());
+  }) : super(SignInInitialState());
   @override
   Stream<SignInState> mapEventToState(
     SignInEvent event,

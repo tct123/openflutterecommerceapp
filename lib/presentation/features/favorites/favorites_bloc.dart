@@ -20,19 +20,18 @@ class FavouriteBloc extends Bloc<FavouriteEvent, FavouriteState> {
   GetFavoriteProductsUseCase getFavoriteProductsUseCase;
   AddProductToCartUseCase addProductToCartUseCase;
 
-  FavouriteBloc() 
-  : addToFavoriteUseCase = sl(),
-    removeFromFavoriteUseCase = sl(),
-    getFavoriteProductsUseCase = sl(),
-    addProductToCartUseCase = sl(),super(FavouriteState());
+  FavouriteBloc()
+      : addToFavoriteUseCase = sl(),
+        removeFromFavoriteUseCase = sl(),
+        getFavoriteProductsUseCase = sl(),
+        addProductToCartUseCase = sl(),
+        super(FavouriteState());
 
   @override
   Stream<FavouriteState> mapEventToState(FavouriteEvent event) async* {
     if (event is ScreenLoadedEvent) {
-      GetFavoriteProductResult favoriteProducts = 
-        await getFavoriteProductsUseCase.execute(
-          GetFavoriteProductParams()
-        );
+      GetFavoriteProductResult favoriteProducts =
+          await getFavoriteProductsUseCase.execute(GetFavoriteProductParams());
       yield FavouriteState(
           sortBy: SortRules(),
           data: favoriteProducts.products,
@@ -42,11 +41,8 @@ class FavouriteBloc extends Bloc<FavouriteEvent, FavouriteState> {
     } else if (event is ProductChangeSortRulesEvent) {
       yield state.getLoading();
       final filteredData = await getFavoriteProductsUseCase.execute(
-        GetFavoriteProductParams(
-          filterRules: state.filterRules,
-          sortRules: event.sortBy
-        )
-      );
+          GetFavoriteProductParams(
+              filterRules: state.filterRules, sortRules: event.sortBy));
       yield state.copyWith(
         sortBy: event.sortBy,
         data: filteredData.products,
@@ -54,34 +50,22 @@ class FavouriteBloc extends Bloc<FavouriteEvent, FavouriteState> {
     } else if (event is ProductChangeFilterRulesEvent) {
       yield state.getLoading();
       final filteredData = await getFavoriteProductsUseCase.execute(
-        GetFavoriteProductParams(
-          filterRules: event.filterRules,
-          sortRules: state.sortBy!
-        )
-      );
+          GetFavoriteProductParams(
+              filterRules: event.filterRules, sortRules: state.sortBy!));
       yield state.copyWith(
-        filterRules: event.filterRules, 
-        data: filteredData.products
-      );
+          filterRules: event.filterRules, data: filteredData.products);
     } else if (event is AddToCartEvent) {
       await addProductToCartUseCase.execute(CartItem(
-        product: event.favouriteProduct.product, 
-        productQuantity: ProductQuantity(1), 
-        selectedAttributes: event.favouriteProduct.favoriteForm
-      ));
-    } else if ( event is RemoveFromFavoriteEvent ) {
+          product: event.favouriteProduct.product,
+          productQuantity: ProductQuantity(1),
+          selectedAttributes: event.favouriteProduct.favoriteForm));
+    } else if (event is RemoveFromFavoriteEvent) {
       yield state.getLoading();
-      await removeFromFavoriteUseCase.execute(
-        RemoveFromFavoritesParams(
-          event.product
-        )
-      );
+      await removeFromFavoriteUseCase
+          .execute(RemoveFromFavoritesParams(event.product));
       final filteredData = await getFavoriteProductsUseCase.execute(
-        GetFavoriteProductParams(
-          filterRules: state.filterRules,
-          sortRules: state.sortBy!
-        )
-      );
+          GetFavoriteProductParams(
+              filterRules: state.filterRules, sortRules: state.sortBy!));
       yield state.copyWith(data: filteredData.products);
     }
   }

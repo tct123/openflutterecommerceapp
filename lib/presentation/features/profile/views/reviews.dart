@@ -4,8 +4,8 @@ import 'package:openflutterecommerce/presentation/widgets/widgets.dart';
 class MyReviewsView extends StatefulWidget {
   final Function? changeView;
 
-  const MyReviewsView({ this.changeView}) ;
-  
+  const MyReviewsView({this.changeView});
+
   @override
   _MyReviewsViewState createState() => _MyReviewsViewState();
 }
@@ -14,10 +14,9 @@ class _MyReviewsViewState extends State<MyReviewsView> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      child: OpenFlutterBlockHeader(
-        title: 'Payment Methods', 
-        width: MediaQuery.of(context).size.width,
-      )
-    );
+        child: OpenFlutterBlockHeader(
+      title: 'Payment Methods',
+      width: MediaQuery.of(context).size.width,
+    ));
   }
 }

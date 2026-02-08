@@ -14,10 +14,10 @@ abstract class CartState extends Equatable {
 }
 
 @immutable
-class CartInitialState extends CartState { }
+class CartInitialState extends CartState {}
 
 @immutable
-class CartLoadingState extends CartState { }
+class CartLoadingState extends CartState {}
 
 @immutable
 class CartLoadedState extends CartState {
@@ -29,12 +29,12 @@ class CartLoadedState extends CartState {
   final Promo? appliedPromo;
 
   CartLoadedState(
-    {required this.showPromoPopup,
-    required this.promos,
-    this.totalPrice,
-    this.calculatedPrice,
-    this.appliedPromo,
-    required this.cartProducts});
+      {required this.showPromoPopup,
+      required this.promos,
+      this.totalPrice,
+      this.calculatedPrice,
+      this.appliedPromo,
+      required this.cartProducts});
 
   CartLoadedState copyWith(
       {List<CartItem>? cartProducts,
@@ -53,7 +53,8 @@ class CartLoadedState extends CartState {
   }
 
   @override
-  List<Object> get props => [totalPrice!, cartProducts, appliedPromo!, showPromoPopup];
+  List<Object> get props =>
+      [totalPrice!, cartProducts, appliedPromo!, showPromoPopup];
 }
 
 @immutable

@@ -1,5 +1,5 @@
 /// # 1. Home Screen
-/// 1.1. Home Screen 1 use-case: Use loads the app, list of new products 
+/// 1.1. Home Screen 1 use-case: Use loads the app, list of new products
 /// for home page are loaded and displayed in the app.
 /// https://medium.com/@openflutterproject/open-flutter-project-e-commerce-app-use-cases-and-features-6b7414a6e708
 
@@ -11,37 +11,41 @@ import 'package:openflutterecommerce/locator.dart';
 abstract class GetHomePageProductsUseCase
     implements BaseUseCase<HomeProductsResult, HomeProductParams> {}
 
-    
 class GetHomePageProductsUseCaseImpl implements GetHomePageProductsUseCase {
-
   @override
-  Future<HomeProductsResult> execute(
-      HomeProductParams params) async {
+  Future<HomeProductsResult> execute(HomeProductParams params) async {
     try {
       ProductRepository productRepository = sl();
-      return HomeProductsResult(  
-        salesProducts: await productRepository.getProducts(categoryId: 1, filterRules: null!),
-        newProducts: await productRepository.getProducts(categoryId: 2, filterRules: null!),
-        result: false, exception: null!,
+      return HomeProductsResult(
+        salesProducts: await productRepository.getProducts(
+            categoryId: 1, filterRules: null!),
+        newProducts: await productRepository.getProducts(
+            categoryId: 2, filterRules: null!),
+        result: false,
+        exception: null!,
       );
     } catch (e) {
-      return HomeProductsResult(  
-        salesProducts: [],
-        newProducts: [],
-        result: false,
-        exception: HomeProductsException()
-      );
+      return HomeProductsResult(
+          salesProducts: [],
+          newProducts: [],
+          result: false,
+          exception: HomeProductsException());
     }
   }
 }
+
 class HomeProductParams {}
 
 class HomeProductsResult extends UseCaseResult {
   final List<Product> salesProducts;
   final List<Product> newProducts;
 
-  HomeProductsResult({required this.salesProducts, required this.newProducts, required Exception exception, required bool result})
-    : super(exception: exception, result: result);
+  HomeProductsResult(
+      {required this.salesProducts,
+      required this.newProducts,
+      required Exception exception,
+      required bool result})
+      : super(exception: exception, result: result);
 }
 
 class HomeProductsException implements Exception {}

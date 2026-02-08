@@ -6,29 +6,25 @@
 import 'package:openflutterecommerce/data/model/payment_method.dart';
 import 'package:openflutterecommerce/data/repositories/abstract/payment_method_repository.dart';
 
-class FakePaymentMethodRepository implements PaymentMethodRepository{
-
+class FakePaymentMethodRepository implements PaymentMethodRepository {
   final PaymentMethodDataStorage dataStorage = PaymentMethodDataStorage([
     PaymentMethodModel(
-      id: 1,
-      nameOnCard: 'Andrew Poteryahin',
-      cardNumber: '4000 0000 0000 0001',
-      expiryDateMonth: 12,
-      expiryDateYear: 2025,
-      cvv: 111,
-      isDefault: true
-    ),
+        id: 1,
+        nameOnCard: 'Andrew Poteryahin',
+        cardNumber: '4000 0000 0000 0001',
+        expiryDateMonth: 12,
+        expiryDateYear: 2025,
+        cvv: 111,
+        isDefault: true),
     PaymentMethodModel(
-      id: 2,
-      nameOnCard: 'Andrew Poteryahin',
-      cardNumber: '4000 0000 0000 0002',
-      expiryDateMonth: 12,
-      expiryDateYear: 2025,
-      cvv: 111,
-      isDefault: true
-    )
+        id: 2,
+        nameOnCard: 'Andrew Poteryahin',
+        cardNumber: '4000 0000 0000 0002',
+        expiryDateMonth: 12,
+        expiryDateYear: 2025,
+        cvv: 111,
+        isDefault: true)
   ]);
-
 
   @override
   Future addPaymentMethod(PaymentMethodModel shippingAddress) {

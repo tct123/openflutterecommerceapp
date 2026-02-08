@@ -10,29 +10,26 @@ import '../../../fixtures/fixture_reader.dart';
 import '../use_case_test_include.dart';
 
 void main() {
-
   setupLocator();
   late MockWoocommerceWrapper woocommerce;
   late FindCategoriesByFilterUseCase findCategoriesByFilterUseCase;
   late CategoriesByFilterParams categoriesByFilterParams;
-  
+
   setUp(() {
     woocommerce = sl();
     findCategoriesByFilterUseCase = FindCategoriesByFilterUseCaseImpl();
-    categoriesByFilterParams = CategoriesByFilterParams(
-      categoryId: 1
-    );
+    categoriesByFilterParams = CategoriesByFilterParams(categoryId: 1);
   });
   group('Get list of categories ', () {
     test(
       'should return list of categories when findCategoriesByFilterUseCase.execute is successful',
       () async {
         // arrange
-        when(woocommerce.getCategoryList(parentId: 1))
-          .thenAnswer((_) async => json.decode(fixture('woocommerce/categories.json'))
-        );
+        when(woocommerce.getCategoryList(parentId: 1)).thenAnswer(
+            (_) async => json.decode(fixture('woocommerce/categories.json')));
         // act
-        final categoriesData = await findCategoriesByFilterUseCase.execute(categoriesByFilterParams);
+        final categoriesData = await findCategoriesByFilterUseCase
+            .execute(categoriesByFilterParams);
         // assert
         expect(categoriesData.categories.length, equals(2));
       },
@@ -45,14 +42,13 @@ void main() {
         when(woocommerce.getCategoryList(parentId: 1))
             .thenThrow(HttpRequestException());
         // act
-        final categoriesData = await findCategoriesByFilterUseCase.execute(categoriesByFilterParams);
+        final categoriesData = await findCategoriesByFilterUseCase
+            .execute(categoriesByFilterParams);
         // assert
         expect(categoriesData.validResults, equals(false));
-        expect(categoriesData.exception, isInstanceOf<EmptyCategoriesException>());
+        expect(
+            categoriesData.exception, isInstanceOf<EmptyCategoriesException>());
       },
     );
-
   });
-  
 }
-    

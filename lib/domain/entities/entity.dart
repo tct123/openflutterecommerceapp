@@ -8,9 +8,7 @@ abstract class Entity<TKey> extends Equatable {
   Entity(this.id);
 
   Map<String, dynamic> toMap() {
-    return {
-      'id': id
-    };
+    return {'id': id};
   }
 
   @override

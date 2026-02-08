@@ -1,4 +1,3 @@
-
 import 'package:get_it/get_it.dart';
 import 'package:mockito/mockito.dart';
 import 'package:openflutterecommerce/data/repositories/abstract/category_repository.dart';
@@ -8,9 +7,10 @@ import 'package:openflutterecommerce/data/woocommerce/repositories/category_remo
 import 'package:openflutterecommerce/data/woocommerce/repositories/product_remote_repository.dart';
 import 'package:openflutterecommerce/data/woocommerce/repositories/woocommerce_wrapper.dart';
 
-class MockWoocommerceWrapper extends Mock implements WoocommercWrapperAbstract { }
+class MockWoocommerceWrapper extends Mock
+    implements WoocommercWrapperAbstract {}
 
-final sl = GetIt.instance; 
+final sl = GetIt.instance;
 
 void setupLocator() {
   sl.allowReassignment = true;
@@ -20,11 +20,11 @@ void setupLocator() {
   sl.registerLazySingleton<MockWoocommerceWrapper>(
     () => woocommerce,
   );
-  
+
   sl.registerLazySingleton<WoocommercWrapperAbstract>(
     () => woocommerce,
   );
-  
+
   sl.registerLazySingleton<CategoryRepository>(
     () => RemoteCategoryRepository(woocommerce: woocommerce),
   );
@@ -32,6 +32,6 @@ void setupLocator() {
   sl.registerLazySingleton<ProductRepository>(
     () => RemoteProductRepository(woocommerce: sl()),
   );
-  
+
   sl.registerLazySingleton<NetworkStatus>(() => NetworkStatusImpl());
 }

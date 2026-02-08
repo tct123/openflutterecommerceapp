@@ -9,7 +9,8 @@ class ProductParameterVariantEntity extends Entity<int> {
       {required int id,
       required this.title,
       required this.productParameterId,
-      required this.additionalPrice}) : super(id);
+      required this.additionalPrice})
+      : super(id);
 
   @override
   Map<String, dynamic> toMap() {
@@ -22,10 +23,5 @@ class ProductParameterVariantEntity extends Entity<int> {
   }
 
   @override
-  List<Object> get props => [
-    id, 
-    title, 
-    productParameterId, 
-    additionalPrice
-  ];
+  List<Object> get props => [id, title, productParameterId, additionalPrice];
 }

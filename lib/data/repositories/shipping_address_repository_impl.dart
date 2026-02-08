@@ -7,8 +7,7 @@ import 'package:openflutterecommerce/data/model/shipping_address.dart';
 import 'package:openflutterecommerce/data/repositories/abstract/shipping_address_repository.dart';
 import 'package:openflutterecommerce/data/repositories/fake_repos/shipping_address_repository.dart';
 
-class ShippingAddressRepositoryImpl implements ShippingAddressRepository{
-
+class ShippingAddressRepositoryImpl implements ShippingAddressRepository {
   final ShippingAddressDataStorage dataStorage;
 
   ShippingAddressRepositoryImpl(this.dataStorage);
@@ -20,7 +19,7 @@ class ShippingAddressRepositoryImpl implements ShippingAddressRepository{
 
   @override
   Future<List<ShippingAddressModel>> getShippingAddressList() async {
-    if ( dataStorage.shippingAddresses?.isEmpty == true ) {
+    if (dataStorage.shippingAddresses?.isEmpty == true) {
       FakeShippingAddressRepository repo = FakeShippingAddressRepository();
       dataStorage.shippingAddresses = await repo.getShippingAddressList();
     }
@@ -28,28 +27,26 @@ class ShippingAddressRepositoryImpl implements ShippingAddressRepository{
   }
 
   @override
-  Future removeShippingAddress(int shippingAddressId ) async {
+  Future removeShippingAddress(int shippingAddressId) async {
     dataStorage.shippingAddresses.removeWhere(
-      (shippingAddress) => shippingAddress.id == shippingAddressId );
+        (shippingAddress) => shippingAddress.id == shippingAddressId);
   }
 
   @override
-  Future setDefaultShippingAddress(int shippingAddressId ) async {
-    List<ShippingAddressModel> shippingAddresses = dataStorage.shippingAddresses;
+  Future setDefaultShippingAddress(int shippingAddressId) async {
+    List<ShippingAddressModel> shippingAddresses =
+        dataStorage.shippingAddresses;
     dataStorage.shippingAddresses.clear();
     shippingAddresses.forEach((shippingAddress) {
-      dataStorage.shippingAddresses.add(
-        shippingAddress
-          .copyWith(
-            isDefault: shippingAddress.id == shippingAddressId 
-          )
-      );
+      dataStorage.shippingAddresses.add(shippingAddress.copyWith(
+          isDefault: shippingAddress.id == shippingAddressId));
     });
   }
+
   @override
   Future<ShippingAddressModel> getDefaultShippingAddress() async {
-    ShippingAddressModel shippingAddress = 
-      await dataStorage.shippingAddresses.firstWhere((shippingAddress) => shippingAddress.isDefault);
+    ShippingAddressModel shippingAddress = await dataStorage.shippingAddresses
+        .firstWhere((shippingAddress) => shippingAddress.isDefault);
     return shippingAddress;
   }
 }

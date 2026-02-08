@@ -20,68 +20,59 @@ class ProductBloc extends Bloc<ProductEvent, ProductState> {
   final AddProductToCartUseCase addProductToCartUseCase;
   final int? productId;
 
-  ProductBloc(
-    {this.productId}):
-      getProductByIdUseCaseImpl = sl(),
-      addProductToCartUseCase = sl(),
-      addToFavoriteUseCase = sl(),
-      removeFromFavoritesUseCase = sl(),super(ProductInitialState());
+  ProductBloc({this.productId})
+      : getProductByIdUseCaseImpl = sl(),
+        addProductToCartUseCase = sl(),
+        addToFavoriteUseCase = sl(),
+        removeFromFavoritesUseCase = sl(),
+        super(ProductInitialState());
 
   @override
   Stream<ProductState> mapEventToState(ProductEvent event) async* {
     if (event is ProductScreenLoadedEvent) {
       yield ProductLoadingState();
-      final ProductDetailsResults data =  await getProductByIdUseCaseImpl.execute(
-      ProductDetailsParams(
-        categoryId: event.categoryId,
-        productId: event.productId)
-      );
-      yield ProductLoadedState(product: data.productDetails, 
-        similarProducts: data.similarProducts,
-        productAttributes: SelectedProductAttributes(
-          selectedAttributes: HashMap<ProductAttribute, String>(),
-          )
-        );
+      final ProductDetailsResults data =
+          await getProductByIdUseCaseImpl.execute(ProductDetailsParams(
+              categoryId: event.categoryId, productId: event.productId));
+      yield ProductLoadedState(
+          product: data.productDetails,
+          similarProducts: data.similarProducts,
+          productAttributes: SelectedProductAttributes(
+            selectedAttributes: HashMap<ProductAttribute, String>(),
+          ));
     } else if (event is ProductAddToFavoritesEvent) {
       ProductLoadedState currentState = state as ProductLoadedState;
-      await addToFavoriteUseCase.execute(
-        FavoriteProduct(
-          currentState.product,
-          currentState.productAttributes.selectedAttributes
-        )
-      );
+      await addToFavoriteUseCase.execute(FavoriteProduct(currentState.product,
+          currentState.productAttributes.selectedAttributes));
     } else if (event is ProductRemoveFromFavoritesEvent) {
-      if ( state is ProductLoadedState) {
+      if (state is ProductLoadedState) {
         ProductLoadedState currentState = state as ProductLoadedState;
-        await removeFromFavoritesUseCase.execute(
-          RemoveFromFavoritesParams(
-            FavoriteProduct(
-              currentState.product,
-              currentState.productAttributes.selectedAttributes
-            )
-          )
-        );
+        await removeFromFavoritesUseCase.execute(RemoveFromFavoritesParams(
+            FavoriteProduct(currentState.product,
+                currentState.productAttributes.selectedAttributes)));
       }
     } else if (event is ProductAddToCartEvent) {
-      if ( state is ProductLoadedState) {
+      if (state is ProductLoadedState) {
         ProductLoadedState currentState = state as ProductLoadedState;
-        AddToCartResult addToCartResult = await addProductToCartUseCase.execute(CartItem(
-          product: currentState.product,
-          productQuantity: ProductQuantity(1),
-          selectedAttributes: currentState.productAttributes.selectedAttributes
-        ));
-        if ( !addToCartResult.result) {
+        AddToCartResult addToCartResult = await addProductToCartUseCase.execute(
+            CartItem(
+                product: currentState.product,
+                productQuantity: ProductQuantity(1),
+                selectedAttributes:
+                    currentState.productAttributes.selectedAttributes));
+        if (!addToCartResult.result) {
           //TODO: show SnackBar with error
         }
       }
     } else if (event is ProductSetAttributeEvent) {
       ProductLoadedState newState = state as ProductLoadedState;
       yield ProductLoadingState();
-      newState.productAttributes.selectedAttributes[event.attribute] =event.selectedValue;
-      yield ProductLoadedState(product: newState.product, 
-        similarProducts: newState.similarProducts,
-        productAttributes: newState.productAttributes
-      );
-    } 
+      newState.productAttributes.selectedAttributes[event.attribute] =
+          event.selectedValue;
+      yield ProductLoadedState(
+          product: newState.product,
+          similarProducts: newState.similarProducts,
+          productAttributes: newState.productAttributes);
+    }
   }
 }

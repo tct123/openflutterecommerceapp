@@ -16,38 +16,34 @@ class OpenFlutterProductListView extends StatelessWidget {
   final List<Product> products;
   final Function(Product product) onFavoritesTap;
 
-  const OpenFlutterProductListView({
-    required this.width,
-    required this.products,
-    required this.onFavoritesTap
-  });
+  const OpenFlutterProductListView(
+      {required this.width,
+      required this.products,
+      required this.onFavoritesTap});
 
   @override
   Widget build(BuildContext context) {
     print('product number is ${products.length}');
     return Container(
-      padding: EdgeInsets.only(top: AppSizes.sidePadding),
-      width: width,
-      height: height,
-      child: ListView(
-        scrollDirection: Axis.horizontal,
-        children: products
-          .map((product) => product.getTileView(
-            context: context,
-            onFavoritesClick: ( () => {
-              onFavoritesTap(product)
-            }), 
-            showProductInfo: () {
-              Navigator.of(context).pushNamed(
-                  OpenFlutterEcommerceRoutes.product,
-                  arguments: ProductDetailsParameters(product.id, 
-                    product.categories.isNotEmpty ? 
-                      product.categories[0].id : 0
-                    )
-                  );
-            },
-          )
-        ).toList(growable: false))
-      );
+        padding: EdgeInsets.only(top: AppSizes.sidePadding),
+        width: width,
+        height: height,
+        child: ListView(
+            scrollDirection: Axis.horizontal,
+            children: products
+                .map((product) => product.getTileView(
+                      context: context,
+                      onFavoritesClick: (() => {onFavoritesTap(product)}),
+                      showProductInfo: () {
+                        Navigator.of(context).pushNamed(
+                            OpenFlutterEcommerceRoutes.product,
+                            arguments: ProductDetailsParameters(
+                                product.id,
+                                product.categories.isNotEmpty
+                                    ? product.categories[0].id
+                                    : 0));
+                      },
+                    ))
+                .toList(growable: false)));
   }
 }

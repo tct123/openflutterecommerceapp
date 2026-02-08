@@ -18,28 +18,29 @@ class CartBloc extends Bloc<CartEvent, CartState> {
   final RemoveProductFromCartUseCase removeProductFromCartUseCase;
   final AddToFavoritesUseCase addToFavoritesUseCase;
   final GetPromosUseCase getPromosUseCase;
-  
-  CartBloc() 
-  : getCartProductsUseCase = sl(),
-    removeProductFromCartUseCase = sl(),
-    addToFavoritesUseCase = sl(),
-    getPromosUseCase = sl(),super(CartInitialState());
 
+  CartBloc()
+      : getCartProductsUseCase = sl(),
+        removeProductFromCartUseCase = sl(),
+        addToFavoritesUseCase = sl(),
+        getPromosUseCase = sl(),
+        super(CartInitialState());
 
   @override
   Stream<CartState> mapEventToState(CartEvent event) async* {
     if (event is CartLoadedEvent) {
       if (state is CartInitialState) {
-        final cartResults = await getCartProductsUseCase.execute(GetCartProductParams());
+        final cartResults =
+            await getCartProductsUseCase.execute(GetCartProductParams());
         var promos = await getPromosUseCase.execute(GetPromosParams());
-        
+
         yield CartLoadedState(
-          showPromoPopup: false, 
-          totalPrice: cartResults.totalPrice,
-          calculatedPrice: cartResults.calculatedPrice,
-          promos: promos.promos, 
-          appliedPromo: cartResults.appliedPromo,
-          cartProducts: cartResults.cartItems);
+            showPromoPopup: false,
+            totalPrice: cartResults.totalPrice,
+            calculatedPrice: cartResults.calculatedPrice,
+            promos: promos.promos,
+            appliedPromo: cartResults.appliedPromo,
+            cartProducts: cartResults.cartItems);
       } else if (state is CartLoadedState) {
         yield state;
       }
@@ -50,47 +51,45 @@ class CartBloc extends Bloc<CartEvent, CartState> {
       if (event.newQuantity < 1) {
         await removeProductFromCartUseCase.execute(event.item);
       } else {
-        await changeCartItemQuantityUseCase.execute(ChangeCartItemQuantityParams(
-        item: event.item,
-        quantity: event.newQuantity
-      ));
+        await changeCartItemQuantityUseCase.execute(
+            ChangeCartItemQuantityParams(
+                item: event.item, quantity: event.newQuantity));
       }
-      final cartResults = await getCartProductsUseCase.execute(GetCartProductParams(appliedPromo: null!));
+      final cartResults = await getCartProductsUseCase
+          .execute(GetCartProductParams(appliedPromo: null!));
       yield CartLoadedState(
-        cartProducts: cartResults.cartItems, 
-        promos: state.promos, 
+        cartProducts: cartResults.cartItems,
+        promos: state.promos,
         showPromoPopup: state.showPromoPopup,
-        totalPrice: cartResults.cartItems.isEmpty ? 0.0 : cartResults.totalPrice,
+        totalPrice:
+            cartResults.cartItems.isEmpty ? 0.0 : cartResults.totalPrice,
       );
     } else if (event is CartRemoveFromCartEvent) {
       var state = this.state as CartLoadedState;
       yield CartLoadingState();
       await removeProductFromCartUseCase.execute(event.item);
-      final cartResults = await getCartProductsUseCase.execute(GetCartProductParams(appliedPromo: null!));
+      final cartResults = await getCartProductsUseCase
+          .execute(GetCartProductParams(appliedPromo: null!));
       yield CartLoadedState(
-        cartProducts: cartResults.cartItems, 
-        promos: state.promos, 
+        cartProducts: cartResults.cartItems,
+        promos: state.promos,
         showPromoPopup: state.showPromoPopup,
-        totalPrice: cartResults.cartItems.isEmpty ? 0.0 : cartResults.totalPrice,
+        totalPrice:
+            cartResults.cartItems.isEmpty ? 0.0 : cartResults.totalPrice,
       );
     } else if (event is CartAddToFavsEvent) {
       await addToFavoritesUseCase.execute(
-        FavoriteProduct(
-          event.item.product,
-          event.item.selectedAttributes
-        )
-      );
+          FavoriteProduct(event.item.product, event.item.selectedAttributes));
     } else if (event is CartPromoAppliedEvent) {
       //TODO: apply promo code
       var state = this.state as CartLoadedState;
-      final cartResults = await getCartProductsUseCase.execute(
-        GetCartProductParams(appliedPromo: event.promo)
-      );
+      final cartResults = await getCartProductsUseCase
+          .execute(GetCartProductParams(appliedPromo: event.promo));
       yield state.copyWith(
-        showPromoPopup: false, 
-        totalPrice: cartResults.totalPrice,
-        calculatedPrice: cartResults.calculatedPrice,
-        appliedPromo: event.promo);
+          showPromoPopup: false,
+          totalPrice: cartResults.totalPrice,
+          calculatedPrice: cartResults.calculatedPrice,
+          appliedPromo: event.promo);
     } else if (event is CartPromoCodeAppliedEvent) {
       //TODO: apply promo code
       var state = this.state as CartLoadedState;

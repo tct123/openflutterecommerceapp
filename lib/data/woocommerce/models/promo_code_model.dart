@@ -8,45 +8,43 @@ import 'package:intl/intl.dart';
 import 'package:openflutterecommerce/domain/entities/promo/promo_code_entity.dart';
 
 class PromoCodeModel extends PromoCodeEntity {
-  PromoCodeModel({
-    required int id,
-    required String title,
-    required String promoCode,
-    required double discountPercent,
-    required DateTime dateExpires
-  }) : super(
-    id: id,
-    title: title,
-    promoCode: promoCode,
-    discountPercent: discountPercent,
-    dateExpires: dateExpires,
-    belongsToUser: false,
-    image: "",
-    wasUsed: false
-  );
+  PromoCodeModel(
+      {required int id,
+      required String title,
+      required String promoCode,
+      required double discountPercent,
+      required DateTime dateExpires})
+      : super(
+            id: id,
+            title: title,
+            promoCode: promoCode,
+            discountPercent: discountPercent,
+            dateExpires: dateExpires,
+            belongsToUser: false,
+            image: "",
+            wasUsed: false);
 
   factory PromoCodeModel.fromJson(Map<String, dynamic> json) {
     List<String> images = [];
-    if ( json['images']!=null ) {
+    if (json['images'] != null) {
       (json['images'] as List).forEach((f) => images.add(f['src']));
     }
     return PromoCodeModel(
-      id: (json['id'] as num).toInt(), 
-      title: json['description'],
-      promoCode: json['code'],
-      discountPercent: double.parse(json['amount']),
-      dateExpires: DateTime.parse(json['date_expires'])
-    );
+        id: (json['id'] as num).toInt(),
+        title: json['description'],
+        promoCode: json['code'],
+        discountPercent: double.parse(json['amount']),
+        dateExpires: DateTime.parse(json['date_expires']));
   }
 
   Map<String, dynamic> toJson() {
     return {
-      'id': id, 
+      'id': id,
       'code': promoCode,
       'amount': discountPercent,
       'discount_type': 'percent',
       'description': title,
-      'date_expires':DateFormat('yyyy-MM-ddTHH:mm:ss').format(dateExpires!)
+      'date_expires': DateFormat('yyyy-MM-ddTHH:mm:ss').format(dateExpires!)
     };
   }
 }

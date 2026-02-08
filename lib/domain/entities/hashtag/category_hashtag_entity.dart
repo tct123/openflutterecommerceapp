@@ -4,7 +4,9 @@ class CategoryHashTagEntity extends Entity<int> {
   final int hashTagId;
   final int categoryId;
 
-  CategoryHashTagEntity({required int id, required this.hashTagId, required this.categoryId}) : super(id);
+  CategoryHashTagEntity(
+      {required int id, required this.hashTagId, required this.categoryId})
+      : super(id);
 
   @override
   Map<String, dynamic> toMap() {
@@ -16,9 +18,5 @@ class CategoryHashTagEntity extends Entity<int> {
   }
 
   @override
-  List<Object> get props => [
-    id, 
-    hashTagId, 
-    categoryId
-  ];
+  List<Object> get props => [id, hashTagId, categoryId];
 }

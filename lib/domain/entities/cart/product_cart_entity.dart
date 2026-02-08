@@ -6,10 +6,11 @@ class ProductCartEntity extends Entity<int> {
   final double totalPrice;
 
   ProductCartEntity(
-    {required int id,
-    required this.productId,
-    required this.productCount,
-    required this.totalPrice}) : super(id);
+      {required int id,
+      required this.productId,
+      required this.productCount,
+      required this.totalPrice})
+      : super(id);
 
   @override
   Map<String, dynamic> toMap() {
@@ -22,10 +23,5 @@ class ProductCartEntity extends Entity<int> {
   }
 
   @override
-  List<Object> get props => [
-    id, 
-    productId, 
-    productCount, 
-    totalPrice
-  ];
+  List<Object> get props => [id, productId, productCount, totalPrice];
 }
